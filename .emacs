@@ -29,20 +29,6 @@
   (setq c-basic-offset 2))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hoook)
-                                 
-                                           
-                                           
-
-;php
-;; (load "php-mode")
-;; (add-to-list 'auto-mode-alist
-;;              '("\\.php[345]?\\'\\|\\.phtml\\'" . php-mode))
-
-;worklog
-;(load "~/workspace/worklog/worklog.el")
-;(require 'worklog)
-;(setq worklog-automatic-login t)
-
 
 ;keep TRAMP from saving backups
 (add-to-list 'backup-directory-alist
@@ -70,61 +56,15 @@
 
 (require 'tramp)
 
-;javascript
-;(autoload 'js2-mode "js2" nil t)
-;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
-;mmm
-;  (require 'mmm-mode)
-;  (load "~/.emacs.d/mmm-mako.el")
-;  (setq mmm-global-mode 'maybe)
-;  (add-to-list 'auto-mode-alist '("\\.mako$'" . html-mode))
-;  (mmm-add-mode-ext-class 'html-mode "\\.mako$'" 'mako)
-
-  ;for mmm-confusion . . .
-;  (global-set-key "\M-p" 'mmm-parse-buffer)
-
 ;rst
 (load "~/.emacs.d/rst.el")
 (require 'rst)
 (add-to-list 'auto-mode-alist '("\\.rst$" . rst-mode))
 
-;for python 
-;; (add-hook 'python-mode-hook
-;;           (lambda ()
-;;             (define-key python-mode-map (kbd "C-c % c") 'python-insert-class)
-;;             (define-key python-mode-map (kbd "C-c % d") 'python-insert-def)
-;;             ))
-
 ;haskell
 (load "~/.emacs.d/haskell-mode/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
-
-
-
-;skeletons
-(define-skeleton html-base
-  "A base skeleton for html files"
-  "<html>\n"
-  "<head>\n"
-  "<title>" (skeleton-read "title: ") "</title>\n"
-  "</head>\n"
-  "<body>\n"
-   _ "\n"
-  "</body>\n"
-  "</html>\n"
-)
-
-(defun html-file
-  (interactive 't)
-  (html-base)
-  (point-min-marker)
-  (point-max-marker)
-  (indent-region))
-
-
 
 ;ERC
 (setq erc-auto-query 'buffer)
@@ -136,12 +76,6 @@
 (global-set-key "\C-ck" 'clipboard-kill-ring-save)
 (global-set-key "\C-cc" 'comment-region)
 
-;;mainly for python programs
-(defun insert-coding (coding)
-  (interactive "sCoding:")
-  (save-excursion
-    (goto-char (point-min))
-    (insert "# -*- coding: " coding " -*- #\n")))
 
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
