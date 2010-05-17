@@ -36,6 +36,13 @@
 
 (setq tramp-default-method "ssh")
 
+;save auto backups in the systems temp directory
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-tranforms
+      `((".*" ,temporary-file-directory t)))
+
+
 (autoload 'word-count-mode "word-count"
   "Minor mode to count words" t nil)
 
