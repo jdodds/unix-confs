@@ -34,3 +34,4 @@ no changes added to commit (use "git add" and/or "git commit -a")
 .emacs.d/session*
 *~
 .#*
+.emacs.d/tramp
