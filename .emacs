@@ -83,10 +83,11 @@
 (global-set-key "\C-ck" 'clipboard-kill-ring-save)
 (global-set-key "\C-cc" 'comment-region)
 
-
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;ORG
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
 (global-font-lock-mode 1)
 
