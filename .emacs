@@ -6,6 +6,8 @@
 (winner-mode 1)
 (display-battery-mode 1)
 
+(global-auto-revert-mode)
+
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete)
 (global-auto-complete-mode t)
