@@ -5,7 +5,6 @@ startup_message off
 #got to start some stuff by default, ya know
 #screen -t rtorrent rtorrent
 screen -t htop htop
-screen -t alsamixer alsamixer
 screen -t bash
 
 sessionname default
