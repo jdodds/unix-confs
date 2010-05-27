@@ -17,7 +17,8 @@
 (require 'psvn)
 
 ;(load-library "init_python")
-(load-library "espresso")
+(autoload #'espresso-mode "espresso" "Start espresso-mode" t)
+(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
 (load "~/.emacs.d/nxhtml/autostart.el")
 
 
