@@ -1,0 +1,9 @@
+URxvt.background: black
+URxvt.foreground: white
+URxvt.cursorColor: grey
+URxvt.fading: 30
+URxvt.font: xft:inconsolata:antialias=true:pixelsize=20
+URxvt.scrollBar: false
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
+URxvt.pointerBlank: true
