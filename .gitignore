@@ -278,3 +278,4 @@ writings/
 worklog
 .Trash/
 vms/
+.emacs.d/nxhtml/etc/schema/xhtml-loader.rnc
