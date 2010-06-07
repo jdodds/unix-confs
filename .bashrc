@@ -1,5 +1,6 @@
-SYSTEM_TYPE=$(uname)
+SYSTEM_TYPE=$(uname -a)
 MAC="Darwin"
+LAPTOP="destructor"
 
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:~/bin
 export DISPLAY=:0.0
@@ -13,16 +14,20 @@ alias TOMORROW='date -v +1d +"%Y-%m-%d"'
 
 alias svntodaylog='svn log -r {$(TODAY)}:{$(TOMORROW)}'
 
-if [ $SYSTEM_TYPE == $MAC ]
+if [[ $SYSTEM_TYPE =~ $MAC ]]
 then
     alias mvx='sudo cp -r * /Applications/XAMPP/xamppfiles/htdocs'
+elif [[ $SYSTEM_TYPE =~ $LAPTOP ]]
+then
+    export DEV="jdodds@dev1.cgalvin.com"
 fi
 
 source $HOME/.git-completion.bash
 
-#ssh keys
+#ssh keys -- don't want to enter passphrases if we don't have to, ya know
 if type -P keychain >/dev/null ; then
     eval `keychain --eval --nogui -Q -q id_rsa`
 fi
+
 
 PS1='[\u@\h \W]\$ '
