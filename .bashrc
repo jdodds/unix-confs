@@ -20,4 +20,9 @@ fi
 
 source $HOME/.git-completion.bash
 
+#ssh keys
+if type -P keychain >/dev/null ; then
+    eval `keychain --eval --nogui -Q -q id_rsa`
+fi
+
 PS1='[\u@\h \W]\$ '
