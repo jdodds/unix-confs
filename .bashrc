@@ -14,13 +14,18 @@ alias TOMORROW='date -v +1d +"%Y-%m-%d"'
 
 alias svntodaylog='svn log -r {$(TODAY)}:{$(TOMORROW)}'
 
-if [[ $SYSTEM_TYPE =~ $MAC ]]
-then
+if [[ $SYSTEM_TYPE =~ $MAC ]] ; then
     alias mvx='sudo cp -r * /Applications/XAMPP/xamppfiles/htdocs'
-elif [[ $SYSTEM_TYPE =~ $LAPTOP ]]
-then
-    export DEV="jdodds@dev1.cgalvin.com"
+elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
+    alias pacman='sudo pacman'
+    alias ifconfig='sudo ifconfig'
+    alias iwconfig='sudo iwconfig'
+    alias dhcpcd='sudo dhcpcd'
 fi
+
+export DEV="jdodds@dev1.cgalvin.com"
+export SHA="cgd@jagger.sanbornhead.com"
+export DEV_SVN=$DEV/var/svn
 
 source $HOME/.git-completion.bash
 
