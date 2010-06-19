@@ -110,15 +110,18 @@
  '(c-syntactic-indentation t)
  '(python-honour-comment-indentation nil)
  '(python-use-skeletons nil))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "apple" :family "Courier"))))
- '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
- '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
- '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black")))))
+(let ((height 
+       (cond ((string-match "destructor" system-name) 70)
+             (t 110))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   `(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height ,height :width normal :foundry "Adobe" :family "Courier"))))
+   '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
+   '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
+   '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black"))))))
 
 (put 'narrow-to-region 'disabled nil)
 
