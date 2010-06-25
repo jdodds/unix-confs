@@ -11,6 +11,10 @@
 xsetroot -cursor_name left_ptr
 xmodmap $HOME/.xmodmap
 
+# Start Thinkpad OSD daemon
+if [ -x /usr/bin/tpb ] &&  [ -w /dev/nvram ] && [ -r /dev/nvram ]; then
+    /usr/bin/tpb -d
+fi
 /usr/bin/urxvtd &
 exec ck-launch-session xmonad
 
