@@ -39,6 +39,9 @@
 
 (setq tramp-default-method "ssh")
 
+;(add-to-list 'tramp-default-proxies-alist
+;             '("dev1" "\\`root\\'" "/ssh:%h:"))
+
 ;save auto backups in the systems temp directory
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -84,7 +87,7 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key "\C-cy" 'clipboard-yank)
 (global-set-key "\C-ck" 'clipboard-kill-ring-save)
-(global-set-key "\C-cc" 'comment-region)
+(global-set-key "\C-cc" 'comment-or-uncomment-region)
 
 ;ORG
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
