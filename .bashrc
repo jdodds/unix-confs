@@ -5,6 +5,8 @@ LAPTOP="destructor"
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:~/bin
 export DISPLAY=:0.0
 export EDITOR=/usr/bin/emacs
+export WORKSPACE="$HOME/workspace"
+
 alias ls='ls -G'
 alias less='less -r'
 
@@ -16,6 +18,8 @@ alias svntodaylog='svn log -r {$(TODAY)}:{$(TOMORROW)}'
 
 if [[ $SYSTEM_TYPE =~ $MAC ]] ; then
     alias mvx='sudo cp -r * /Applications/XAMPP/xamppfiles/htdocs'
+    export MARQUEE="$WORKSPACE/marquee/trunk/www"
+    export JAGGER="$WORKSPACE/jagger/trunk/"
 elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     alias pacman='sudo pacman'
     alias ifconfig='sudo ifconfig'
