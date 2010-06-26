@@ -18,9 +18,8 @@ if [[ $SYSTEM_TYPE =~ $MAC ]] ; then
     alias mvx='sudo cp -r * /Applications/XAMPP/xamppfiles/htdocs'
 elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     alias pacman='sudo pacman'
-    alias ifconfig='sudo ifconfig'
-    alias iwconfig='sudo iwconfig'
-    alias dhcpcd='sudo dhcpcd'
+    alias netcfg='sudo netcfg'
+    export PATH=$PATH:/opt/java/jre/bin/
 fi
 
 export DEV="jdodds@dev1.cgalvin.com"
