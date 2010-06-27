@@ -7,3 +7,6 @@ URxvt.scrollBar: false
 URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
 URxvt.pointerBlank: true
+
+dzen2.background: #1a1a1a
+dzen2.foreground: #ffffff
