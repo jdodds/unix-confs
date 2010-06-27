@@ -28,21 +28,19 @@ out_to_console yes
 cpu_avg_samples 2
 text_buffer_size 512
 update_interval 1.0
-update_interval_on_battery 10
+#update_interval_on_battery 10.0
 
 TEXT
-Bat: \
-${if_match $battery_percent < 10}^fg(red)${blink $battery_short}${else}${if_match $battery_percent >= 95}^fg(limegreen)${blink $battery_short}${else}${if_match $battery_percent < 20}^fg(red)$battery_short${else}${if_match $battery_percent > 80}^fg(limegreen)$battery_short${else}$battery_short${endif}${endif}${endif}${endif}^fg(\#e0e0e0) | \
-RAM: \
-${if_match $memperc <= 10}^fg(limegreen)$memperc%${else}${if_match $memperc >= 80}^fg(red)${blink $memperc%}${else}${if_match $memperc > 60}^fg(red)$memperc%${else}$memperc%${endif}${endif}${endif}^fg(\#e0e0e0) | \
-Swap: \
-${if_match $swapperc <= 10}^fg(limegreen)$swapperc%${else}${if_match $swapperc >= 80}^fg(red)${blink $swapperc%}${else}${if_match $swapperc > 50}^fg(red)$swapperc%${else}$swapperc%${endif}${endif}${endif}^fg(\#e0e0e0) | \
-CPU: \
-${if_match ${cpu cpu0} <= 25}^fg(limegreen)${cpu cpu0}%${else}${if_match ${cpu cpu0} >= 85}^fg(red)${blink ${cpu cpu0}%}${else}${if_match ${cpu cpu0} > 70}^fg(red)${cpu cpu0}%${else}${cpu cpu0}%${endif}${endif}${endif}^fg(\#e0e0e0) | \
-HDD: \
-${if_match ${fs_used_perc /home} <= 25}^fg(limegreen)${fs_used_perc /home}%${else}${if_match ${fs_used_perc /home} >= 98}^fg(red)${blink ${fs_used_perc /home}%}${else}${if_match ${fs_used_perc /home} > 85}^fg(red)${fs_used_perc /home}%${else}${fs_used_perc /home}%${endif}${endif}${endif}^fg(\#e0e0e0) | \
-${if_up wlan0} \
-U: ${upspeedf wlan0} D: ${downspeedf wlan0} \
-${if_match ${wireless_link_qual_perc wlan0} <= 30}^fg(red)${blink ${wireless_link_qual_perc wlan0}%}${else}${wireless_link_qual_perc wlan0}%${endif}^fg(\#e0e0e0) | \
+${if_match ${battery_percent} < 10}^fg(red)${blink_blank ^i(bat_empty_01.xbm)}${else}${if_match ${battery_percent} >= 95}^fg(limegreen)${blink_blank ^i(bat_full_01.xbm)}${else}${if_match ${battery_percent} <= 20}^fg(red)^i(bat_empty_01.xbm)${else}${if_match ${battery_percent} >= 80}^fg(limegreen)^i(bat_full_01.xbm)${else}^i(bat_low_01.xbm)${endif}${endif}${endif}${endif}^fg(\#e0e0e0) \
+#RAM
+${if_match ${memperc} < 10}^fg(limegreen)^i(mem.xbm)${else}${if_match ${memperc} >= 90}^fg(red)${blink_blank ^i(mem.xbm)}${else}${if_match ${memperc} >= 70}^fg(red)^i(mem.xbm)${else}^i(mem.xbm)${endif}${endif}${endif}^fg(\#e0e0e0) \
+#Swap
+${if_match ${swapperc} <= 10}^fg(limegreen)^i(diskette.xbm)${else}${if_match ${swapperc} >= 80}^fg(red)${blink_blank ^i(diskette.xbm)}${else}${if_match ${swapperc} >= 50}^fg(red)^i(diskette.xbm)${else}^i(diskette.xbm)${endif}${endif}${endif}^fg(\#e0e0e0) \
+#CPU
+${if_match ${cpu cpu0} <= 25}^fg(limegreen)^i(cpu.xbm)${else}${if_match ${cpu cpu0} >= 85}^fg(red)${blink_blank ^i(cpu.xbm)}${else}${if_match ${cpu cpu0} >= 70}^fg(red)^i(cpu.xbm)${else}^i(cpu.xbm)${endif}${endif}${endif}^fg(\#e0e0e0) \
+#HDD
+${if_match ${fs_used_perc /home} <= 25}^fg(limegreen)^i(hdd.xbm)${else}${if_match ${fs_used_perc /home} >= 98}^fg(red)${blink_blank ^i(hdd.xbm)}${else}${if_match ${fs_used_perc /home} >= 85}^fg(red)^i(hdd.xbm)${else}^i(hdd.xbm)${endif}${endif}${endif}^fg(\#e0e0e0) \
+#Net
+${if_up wlan0}^i(net_up_03.xbm) ${upspeedf wlan0} ^i(net_down_03.xbm) ${downspeedf wlan0} ${if_match ${wireless_link_qual_perc wlan0} <= 30}^fg(red)${blink_blank ^i(wifi_03.xbm)}${else}^i(wifi_03.xbm)${endif}^fg(\#e0e0e0) \
 ${endif}\
 ${time %F %R}

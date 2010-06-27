@@ -12,6 +12,6 @@ main=do
     , layoutHook = avoidStruts $ layoutHook defaultConfig 
     , manageHook = manageDocks <+> manageHook defaultConfig
     }
-myConkyBar = "conky | dzen2 -e 'onstart=lower' -h '16' -w '690' -x 750 -ta r -fg '#e0e0e0' -bg '#1a1a1a'"
+myConkyBar = "conky | abspath-dzen-icons | dzen2 -e 'onstart=lower' -h '16' -w '690' -x 750 -ta r -fg '#e0e0e0' -bg '#1a1a1a'"
 
 
