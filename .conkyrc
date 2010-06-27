@@ -1,0 +1,48 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+out_to_x no
+out_to_stderr no
+out_to_console yes
+cpu_avg_samples 2
+text_buffer_size 512
+update_interval 1.0
+update_interval_on_battery 10
+
+TEXT
+Bat: \
+^p()^ib(1)^pa(35)${if_match $battery_percent < 10}${blink ^fg(red)$battery_short}${else}${if_match $battery_percent >= 95}${blink ^fg(limegreen)$battery_short}${else}${if_match $battery_percent < 20}^fg(red)$battery_short${else}${if_match $battery_percent > 80}^fg(limegreen)$battery_short${else}$battery_short${endif}${endif}${endif}${endif}^fg(\#e0e0e0)^p()^ib(1)^pa(35)      | \
+RAM: \
+^p()^ib(1)^pa(130)${if_match $memperc <= 10}^fg(limegreen)$memperc%${else}${if_match $memperc >= 80}${blink ^fg(red)$memperc%}${else}${if_match $memperc > 60}^fg(red)$memperc%${else}$memperc%${endif}${endif}${endif}^fg(\#e0e0e0)^p()^ib(1)^pa(130)    | \
+Swap: \
+^p()^ib(1)^pa(210)${if_match $swapperc < 10}^fg(limegreen)$swapperc%${else}${if_match $swapperc > 80}${blink ^fg(red)$swapperc%}${else}${if_match $swapperc > 50}^fg(red)$swapperc%${else}$swapperc%${endif}${endif}${endif}^fg(\#e0e0e0)^p()^ib(1)^pa(210)   | \
+CPU: \
+^p()^ib(1)^pa(285)${if_match ${cpu cpu0} <= 25}^fg(limegreen)${cpu cpu0}%${else}${if_match ${cpu cpu0} >= 85}${blink ^fg(red)${cpu cpu0}%}${else}${if_match ${cpu cpu0} > 70}^fg(red)${cpu cpu0}%${else}${cpu cpu0}%${endif}${endif}${endif}^fg(\#e0e0e0)^p()^ib(1)^pa(285)    | \
+HDD: \
+^p()^ib(1)^pa(360)${if_match ${fs_used_perc /home} <= 25}^fg(limegreen)${fs_used_perc /home}%${else}${if_match ${fs_used_perc /home} >= 98}${blink ^fg(red)${fs_used_perc /home}%}${else}${if_match ${fs_used_perc /home} > 85}^fg(red)${fs_used_perc /home}%${else}${fs_used_perc /home}%${endif}${endif}${endif}^fg(\#e0e0e0)^p()^ib(1)^pa(360)   | \
+${if_up wlan0} \
+U: ${upspeedf wlan0} D: ${downspeedf wlan0} \
+^p()^ib(1)^pa(500)${if_match ${wireless_link_qual_perc wlan0} <= 30}${blink ^fg(red)${wireless_link_qual_perc wlan0}%}${else}${wireless_link_qual_perc wlan0}%${endif}^fg(\#e0e0e0)^p()^ib(1)^pa(500)    | \
+${endif} \
+${time %F %R} 
