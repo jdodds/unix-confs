@@ -8,6 +8,9 @@
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
+if [ -d /usr/local/bin ]; then
+    PATH=$PATH:/usr/local/bin
+fi
 xsetroot -cursor_name left_ptr
 xmodmap $HOME/.xmodmap
 
