@@ -24,9 +24,8 @@ if [[ $SYSTEM_TYPE =~ $MAC ]] ; then
     export PATH=$PATH:/usr/local/mysql-5.1.48-osx10.6-x86_64/bin/
 elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     alias pacman='sudo pacman'
-    alias ifconfig='sudo ifconfig'
-    alias iwconfig='sudo iwconfig'
-    alias dhcpcd='sudo dhcpcd'
+    alias netcfg='sudo netcfg'
+    export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
 fi
 
 export DEV="jdodds@dev1.cgalvin.com"

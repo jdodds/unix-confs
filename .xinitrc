@@ -11,6 +11,10 @@
 SYSTEM_TYPE=$(uname -a)
 MAC="Darwin"
 LAPTOP="destructor"
+if [ -d /usr/local/bin ]; then
+    PATH=$PATH:/usr/local/bin
+fi
+
 xsetroot -cursor_name left_ptr
 xmodmap $HOME/.xmodmap
 

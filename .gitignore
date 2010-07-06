@@ -272,7 +272,10 @@ what/
 whatnot/
 wpa.key
 writings/
-.xmonad
+.xmonad/xmonad-*
+.xmonad/*hi
+.xmonad/*o
+.xmonad/*errors*
 .bash_profile
 worklog
 .Trash/

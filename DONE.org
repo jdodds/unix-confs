@@ -1,0 +1,1 @@
+<2010-06-27 Sun> Patched conky to allow image blinking (admittedly, in a naive fashion)
