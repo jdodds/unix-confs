@@ -19,6 +19,7 @@ if [ -x /usr/bin/tpb ] &&  [ -w /dev/nvram ] && [ -r /dev/nvram ]; then
     /usr/bin/tpb -d
 fi
 /usr/bin/urxvtd &
+/usr/bin/syndaemon -d &
 exec ck-launch-session xmonad
 
 
