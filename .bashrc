@@ -15,11 +15,13 @@ alias YESTERDAY='date -v -1d +"%Y-%m-%d"'
 alias TOMORROW='date -v +1d +"%Y-%m-%d"'
 
 alias svntodaylog='svn log -r {$(TODAY)}:{$(TOMORROW)}'
+alias svndiff='svn diff | colordiff | less'
 
 if [[ $SYSTEM_TYPE =~ $MAC ]] ; then
     alias mvx='sudo cp -r * /Applications/XAMPP/xamppfiles/htdocs'
     export MARQUEE="$WORKSPACE/marquee/trunk/www"
     export JAGGER="$WORKSPACE/jagger/trunk/"
+    export PATH=$PATH:/usr/local/mysql-5.1.48-osx10.6-x86_64/bin/
 elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     alias pacman='sudo pacman'
     alias netcfg='sudo netcfg'
