@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.NoBorders
 import XMonad.Util.Run
 
 main=do
@@ -10,7 +11,7 @@ main=do
     { terminal = "urxvtc"
     , modMask  = mod4Mask
     , borderWidth = 3
-    , layoutHook = avoidStruts $ layoutHook defaultConfig 
+    , layoutHook = avoidStruts $ smartBorders $ layoutHook defaultConfig 
     , manageHook = manageDocks <+> manageHook defaultConfig
 --    , logHook = dynamicLogWithPP $ defaultPP { ppOutput = hPutStrLn statusBar }
     }
