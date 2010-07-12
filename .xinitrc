@@ -25,6 +25,7 @@ if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
     fi
 
     /usr/bin/urxvtd &
+    /usr/bin/syndaemon -d &
     exec ck-launch-session xmonad
 fi
 
