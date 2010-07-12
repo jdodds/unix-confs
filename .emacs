@@ -63,7 +63,7 @@
 
 (setq-default fill-column 80)
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 
 (auto-fill-mode 1)
 
