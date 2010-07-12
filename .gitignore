@@ -1,1 +1,3 @@
 .emacs.d/auto-save-list/
+.emacs.d/nxhtml/etc/schema/xhtml-loader.rnc
+.emacs.d/tramp
