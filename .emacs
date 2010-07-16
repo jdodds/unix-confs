@@ -108,6 +108,16 @@
    (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 
+;always reindent after yanking for most major modes
+(dolist (command '(yank yank-pop))
+  (eval `(defadvice ,command (after indent-region activate)
+           (and (not current-prefix-arg)
+                (not (member major-mode '(text-mode fundamental-mode)))
+                (let ((mark-even-if-inactive transient-mark-mode))
+                  (indent-region (region-beginning) (region-end) nil))))))
+
+
+
 ;BELOW HERE THERE BE DRAGONS.
 
 (custom-set-variables
