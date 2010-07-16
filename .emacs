@@ -21,6 +21,10 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
 (load "~/.emacs.d/nxhtml/autostart.el")
 
+;automatically guess style based on the file we're opening
+;(autoload 'guess-style-set-variable "guess-style" nil t)
+;(autoload 'guess-style-guess-variable "guess-style")
+;(autoload 'guess-style-guess-all "guess-style" nil t)
 
 ;indent styles for c modes (php atm)
 (defun my-c-mode-hoook ()
@@ -32,6 +36,7 @@
   (setq c-basic-offset 2))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hoook)
+;(add-hook 'c-mode-common-hook 'guess-style-guess-all)
 
 ;keep TRAMP from saving backups
 (add-to-list 'backup-directory-alist
@@ -78,6 +83,7 @@
 (load "~/.emacs.d/haskell-mode/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;(add-hook 'haskell-mode-hook 'guess-style-guess-all)
 
 ;ERC
 (setq erc-auto-query 'buffer)
