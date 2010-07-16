@@ -53,6 +53,14 @@
 (setq auto-save-file-name-tranforms
       `((".*" ,temporary-file-directory t)))
 
+;templates
+(require 'autoinsert)
+(auto-insert-mode)
+(setq auto-insert-directory "~/.emacs.d/templates/")
+(setq auto-insert-query nil) ; don't ask to insert templates
+(define-auto-insert "\.sh" "bash-template.sh")
+(define-auto-insert "\.php" "php-template.php")
+
 
 (autoload 'word-count-mode "word-count"
   "Minor mode to count words" t nil)
