@@ -33,6 +33,7 @@
         indent-tabs-mode nil)
   (c-toggle-hungry-state 1)
   (c-toggle-auto-state 1)
+  (c-set-offset 'arglist-close 0)
   (setq c-basic-offset 2))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hoook)
