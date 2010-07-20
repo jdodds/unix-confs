@@ -61,6 +61,10 @@
 (define-auto-insert "\.sh" "bash-template.sh")
 (define-auto-insert "\.php" "php-template.php")
 
+;yaml
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 
 (autoload 'word-count-mode "word-count"
   "Minor mode to count words" t nil)
