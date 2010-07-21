@@ -61,6 +61,7 @@
 (setq auto-insert-query nil) ; don't ask to insert templates
 (define-auto-insert "\.sh" "bash-template.sh")
 (define-auto-insert "\.php" "php-template.php")
+(define-auto-insert "\.py" "python-template.py")
 
 ;yaml
 (require 'yaml-mode)
