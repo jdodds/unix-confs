@@ -63,6 +63,12 @@
 (define-auto-insert "\.php" "php-template.php")
 (define-auto-insert "\.py" "python-template.py")
 
+;python
+(add-hook 'python-mode-hook '(lambda ()
+                               (require 'virtualenv)
+                               (setq virtualenv-root-dir
+                                     (concat (getenv "HOME") "/workspace/"))))
+
 ;yaml
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -137,6 +143,34 @@
                   (indent-region (region-beginning) (region-end) nil))))))
 
 
+(put 'narrow-to-region 'disabled nil)
+
+
+(defun jump-to-window (buffer-name)
+  (interactive "bEnter buffer to jump to: ")
+  (let ((visible-buffers (mapcar '(lambda (window) (buffer-name (window-buffer window))) (window-list)))
+        window-of-buffer)
+    (if (not (member buffer-name visible-buffers))
+        (error "'%s' does not have visible window" buffer-name)
+      (setq window-of-buffer
+            (delq nil (mapcar '(lambda (window) 
+                                 (if (equal buffer-name (buffer-name (window-buffer window)))
+                                     window nil)) (window-list))))
+      (select-window (car window-of-buffer)))))
+(global-set-key "\C-xB" 'jump-to-window)
+
+(defun macro-query (arg)
+  (interactive "P")
+  (let* ((prompt (if arg (read-from-minibuffer "PROMPT: ") "Input: "))
+         (input (minibuffer-with-setup-hook (lambda () (kbd-macro-query t))
+                  (read-from-minibuffer prompt))))
+    (unless (string= "" input) (insert input))))
+
+(global-set-key "\C-xQ" 'macro-query)
+
+;utility keybindings
+(global-set-key "\C-x\C-b" 'browse-url-at-point)
+
 
 ;BELOW HERE THERE BE DRAGONS.
 
@@ -162,27 +196,3 @@
    '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
    '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black"))))))
 
-(put 'narrow-to-region 'disabled nil)
-
-
-(defun jump-to-window (buffer-name)
-  (interactive "bEnter buffer to jump to: ")
-  (let ((visible-buffers (mapcar '(lambda (window) (buffer-name (window-buffer window))) (window-list)))
-	window-of-buffer)
-    (if (not (member buffer-name visible-buffers))
-	(error "'%s' does not have visible window" buffer-name)
-      (setq window-of-buffer
-	    (delq nil (mapcar '(lambda (window) 
-				  (if (equal buffer-name (buffer-name (window-buffer window)))
-				      window nil)) (window-list))))
-      (select-window (car window-of-buffer)))))
-(global-set-key "\C-xB" 'jump-to-window)
-
-(defun macro-query (arg)
-  (interactive "P")
-  (let* ((prompt (if arg (read-from-minibuffer "PROMPT: ") "Input: "))
-         (input (minibuffer-with-setup-hook (lambda () (kbd-macro-query t))
-                  (read-from-minibuffer prompt))))
-    (unless (string= "" input) (insert input))))
-
-(global-set-key "\C-xQ" 'macro-query)
