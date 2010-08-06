@@ -6,7 +6,7 @@ export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:~/bin
 export DISPLAY=:0.0
 export EDITOR=/usr/bin/emacs
 export WORKSPACE="$HOME/workspace"
-export GIT_EDITOR=emacs
+export GIT_EDITOR=emacsclient
 
 alias ls='ls -G'
 alias less='less -r'
