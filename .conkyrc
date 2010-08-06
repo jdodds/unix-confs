@@ -28,6 +28,7 @@ out_to_console yes
 cpu_avg_samples 2
 text_buffer_size 512
 update_interval 1.0
+if_up_strictness address
 #update_interval_on_battery 10.0
 
 TEXT
