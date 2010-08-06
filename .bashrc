@@ -28,6 +28,9 @@ elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     alias netcfg='sudo netcfg'
     alias ifconfig='sudo ifconfig'
     alias iwlist='sudo iwlist'
+    alias mount='sudo mount'
+    alias umount='sudo umount'
+    alias eject='sudo eject'
     export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
 fi
 
