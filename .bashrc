@@ -27,6 +27,7 @@ elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     alias pacman='sudo pacman'
     alias netcfg='sudo netcfg'
     alias ifconfig='sudo ifconfig'
+    alias iwlist='sudo iwlist'
     export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
 fi
 
