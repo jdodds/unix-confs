@@ -1,3 +1,5 @@
+.emacs.d/geben/.storage
+.emacs.d/geben/*/home/*
 .emacs.d/auto-save-list/
 .emacs.d/nxhtml/etc/schema/xhtml-loader.rnc
 .emacs.d/tramp
@@ -6,3 +8,4 @@
 .xmonad/xmonad.hi
 .xmonad/xmonad.o
 .#*
+*elc

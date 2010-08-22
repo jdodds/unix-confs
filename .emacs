@@ -41,6 +41,10 @@
   (c-set-offset 'arglist-close 0)
   (setq c-basic-offset 2))
 
+;geben -- xdebug for php and all that
+(add-to-list 'load-path "~/.emacs.d/geben/")
+(autoload 'geben "geben" "PHP Debugger on Emacs" t)
+
 (add-hook 'c-mode-common-hook 'my-c-mode-hoook)
 ;(add-hook 'c-mode-common-hook 'guess-style-guess-all)
 (add-hook 'find-file-hook 'flymake-mode)
