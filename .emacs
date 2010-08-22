@@ -28,6 +28,7 @@
 
 ;use chrome as default browser on laptop
 (if (string-match "destructor" system-name)
+    (setq flymake-js-rhino-jar "/usr/share/java/js.jar")
     (setq browse-url-browser-function 'browse-url-generic
           browse-url-generic-program "chromium"))
 
