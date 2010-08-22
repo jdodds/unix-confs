@@ -75,14 +75,21 @@
 ;python
 (add-hook 'python-mode-hook
           '(lambda ()
-             (setq parens-require-spaces nil)
-             (local-set-key "\"" 'electric-pair)
-             (local-set-key "\'" 'electric-pair)
-             (local-set-key "("  'electric-pair)
-             (local-set-key "["  'electric-pair)
-             (local-set-key "{"  'electric-pair)
+             (set-electrics)
              (require 'virtualenv)))
-    
+;php
+(add-hook 'php-mode-hook
+          'set-electrics)
+
+(defun set-electrics ()
+  "Set common-to-most-languages electric pairs"
+  (setq parens-require-spaces nil)
+  (local-set-key "\"" 'electric-pair)
+  (local-set-key "\'" 'electric-pair)
+  (local-set-key "("  'electric-pair)
+  (local-set-key "["  'electric-pair)
+  (local-set-key "{"  'electric-pair))
+
 (defun electric-pair ()
   "Insert character pair without surrounding spaces"
   (interactive)
