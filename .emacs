@@ -43,7 +43,7 @@
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hoook)
 ;(add-hook 'c-mode-common-hook 'guess-style-guess-all)
-
+(add-hook 'find-file-hook 'flymake-mode)
 ;keep TRAMP from saving backups
 (add-to-list 'backup-directory-alist
              (cons tramp-file-name-regexp nil))
