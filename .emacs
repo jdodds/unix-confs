@@ -26,6 +26,11 @@
 ;(autoload 'guess-style-guess-variable "guess-style")
 ;(autoload 'guess-style-guess-all "guess-style" nil t)
 
+;use chrome as default browser on laptop
+(if (string-match "destructor" system-name)
+    (setq browse-url-browser-function 'browse-url-generic
+          browse-url-generic-program "chromium"))
+
 ;indent styles for c modes (php atm)
 (defun my-c-mode-hoook ()
   (c-set-style "awk")
