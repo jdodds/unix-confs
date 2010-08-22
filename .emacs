@@ -69,10 +69,21 @@
 (define-auto-insert "\.py" "python-template.py")
 
 ;python
-(add-hook 'python-mode-hook '(lambda ()
-                               (require 'virtualenv)
-                               (setq virtualenv-root-dir
-                                     (concat (getenv "HOME") "/workspace/"))))
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (setq parens-require-spaces nil)
+             (local-set-key "\"" 'electric-pair)
+             (local-set-key "\'" 'electric-pair)
+             (local-set-key "("  'electric-pair)
+             (local-set-key "["  'electric-pair)
+             (local-set-key "{"  'electric-pair)
+             (require 'virtualenv)))
+    
+(defun electric-pair ()
+  "Insert character pair without surrounding spaces"
+  (interactive)
+  (let (parens-require-spaces)
+    (insert-pair)))
 
 ;yaml
 (require 'yaml-mode)
