@@ -32,6 +32,12 @@
 ;(autoload 'guess-style-guess-variable "guess-style")
 ;(autoload 'guess-style-guess-all "guess-style" nil t)
 
+;use chrome as default browser on laptop
+(if (string-match "destructor" system-name)
+    (setq flymake-js-rhino-jar "/usr/share/java/js.jar")
+    (setq browse-url-browser-function 'browse-url-generic
+          browse-url-generic-program "chromium"))
+
 ;indent styles for c modes (php atm)
 (defun my-c-mode-hoook ()
   (c-set-style "awk")
@@ -42,9 +48,13 @@
   (c-set-offset 'arglist-close 0)
   (setq c-basic-offset 2))
 
+;geben -- xdebug for php and all that
+(add-to-list 'load-path "~/.emacs.d/geben/")
+(autoload 'geben "geben" "PHP Debugger on Emacs" t)
+
 (add-hook 'c-mode-common-hook 'my-c-mode-hoook)
 ;(add-hook 'c-mode-common-hook 'guess-style-guess-all)
-
+(add-hook 'find-file-hook 'flymake-mode)
 ;keep TRAMP from saving backups
 (add-to-list 'backup-directory-alist
              (cons tramp-file-name-regexp nil))
@@ -70,10 +80,28 @@
 (define-auto-insert "\.py" "python-template.py")
 
 ;python
-(add-hook 'python-mode-hook '(lambda ()
-                               (require 'virtualenv)
-                               (setq virtualenv-root-dir
-                                     (concat (getenv "HOME") "/workspace/"))))
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (set-electrics)
+             (require 'virtualenv)))
+;php
+(add-hook 'php-mode-hook
+          'set-electrics)
+
+(defun set-electrics ()
+  "Set common-to-most-languages electric pairs"
+  (setq parens-require-spaces nil)
+  (local-set-key "\"" 'electric-pair)
+  (local-set-key "\'" 'electric-pair)
+  (local-set-key "("  'electric-pair)
+  (local-set-key "["  'electric-pair)
+  (local-set-key "{"  'electric-pair))
+
+(defun electric-pair ()
+  "Insert character pair without surrounding spaces"
+  (interactive)
+  (let (parens-require-spaces)
+    (insert-pair)))
 
 ;yaml
 (require 'yaml-mode)
@@ -201,4 +229,12 @@
    '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
    '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
    '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black"))))))
-
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 70 :width normal :foundry "Adobe" :family "Courier"))))
+ '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
+ '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
+ '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black")))))

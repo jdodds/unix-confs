@@ -6,7 +6,7 @@ export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:~/bin
 export DISPLAY=:0.0
 export EDITOR=/usr/bin/emacs
 export WORKSPACE="$HOME/workspace"
-export GIT_EDITOR=emacs
+export GIT_EDITOR=emacsclient
 
 alias ls='ls -G'
 alias less='less -r'
@@ -31,6 +31,10 @@ elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     alias mount='sudo mount'
     alias umount='sudo umount'
     alias eject='sudo eject'
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/bin/virtualenvwrapper.sh
+    export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_RESPECT_VIRTUALENV=true
     export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
 fi
 
