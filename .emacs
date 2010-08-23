@@ -16,6 +16,12 @@
 
 (require 'psvn)
 
+(defun untabify-and-indent ()
+  (interactive)
+  (untabify (point-min) (point-max))
+  (indent-region (point-min) (point-max)))
+    
+
 ;(load-library "init_python")
 (autoload #'espresso-mode "espresso" "Start espresso-mode" t)
 (add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
