@@ -20,6 +20,15 @@
   (interactive)
   (untabify (point-min) (point-max))
   (indent-region (point-min) (point-max)))
+
+(defun pretty-print-xml ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward-regexp "\>[ \\t]*\<" nil t)
+      (backward-char) (insert "\n"))
+    (indent-region (point-min) (point-max)))
+  (message "Aahhhh"))
     
 
 ;(load-library "init_python")
