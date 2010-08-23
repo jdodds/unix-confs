@@ -33,7 +33,7 @@
 
 ;(load-library "init_python")
 (autoload #'espresso-mode "espresso" "Start espresso-mode" t)
-(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
+;(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
 (load "~/.emacs.d/nxhtml/autostart.el")
 
 ;automatically guess style based on the file we're opening
@@ -48,8 +48,8 @@
       (setq browse-url-browser-function 'browse-url-generic
             browse-url-generic-program "chromium"))
   (progn
-    (setq flymake-js-rhino-jar "/home/jdodds/Library/Java/Extensions/js.jar")
-    (setq flymake-js-rhino-jslint "/home/jdodds/src/fulljslint.js")))
+    (setq flymake-js-rhino-jar "/Users/jdodds/Library/Java/Extensions/js.jar")
+    (setq flymake-js-rhino-jslint "/Users/jdodds/src/jslint.js")))
 
 (setq flymake-js-rhino-use-jslint t)
 
