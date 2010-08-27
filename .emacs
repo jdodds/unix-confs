@@ -77,6 +77,7 @@
 (define-auto-insert "\.sh" "bash-template.sh")
 (define-auto-insert "\.php" "php-template.php")
 (define-auto-insert "\.py" "python-template.py")
+(define-auto-insert "\.js" "javascript-template.js")
 
 ;python
 (add-hook 'python-mode-hook
