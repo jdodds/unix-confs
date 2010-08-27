@@ -27,10 +27,15 @@
 ;(autoload 'guess-style-guess-all "guess-style" nil t)
 
 ;use chrome as default browser on laptop
-(if (string-match "destructor" system-name)
-    (setq flymake-js-rhino-jar "/usr/share/java/js.jar")
-    (setq browse-url-browser-function 'browse-url-generic
-          browse-url-generic-program "chromium"))
+(when (string-match "destructor" system-name)
+  (setq flymake-js-rhino-jar "/usr/share/java/js.jar")
+  (setq flymake-js-rhino-use-jslint t)
+  (setq flymake-js-rhino-jslint "/home/jdd/workspace/jslint.el/jslint.js")
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "chromium"))
+(global-set-key [f3] 'flymake-goto-prev-error)
+(global-set-key [f4] 'flymake-goto-next-error)
+
 
 ;indent styles for c modes (php atm)
 (defun my-c-mode-hoook ()
