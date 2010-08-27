@@ -16,9 +16,35 @@
 
 (require 'psvn)
 
+(defun untabify-and-indent ()
+  (interactive)
+  (untabify (point-min) (point-max))
+  (indent-region (point-min) (point-max)))
+
+(defun pretty-print-xml ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward-regexp "\>[ \\t]*\<" nil t)
+      (backward-char) (insert "\n"))
+    (indent-region (point-min) (point-max)))
+  (message "Aahhhh"))
+
+(defun untabify-directory (dir)
+  (interactive "DDirectory Root:")
+  (dolist (file (directory-files dir t))
+    (if (file-regular-p file)
+        (with-temp-buffer
+          (find-file file)
+          (untabify-and-indent)
+          (save-buffer))
+      (message "Skipping directory %s." file))))
+
+    
+
 ;(load-library "init_python")
 (autoload #'espresso-mode "espresso" "Start espresso-mode" t)
-(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
+;(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
 (load "~/.emacs.d/nxhtml/autostart.el")
 
 ;automatically guess style based on the file we're opening
@@ -26,16 +52,20 @@
 ;(autoload 'guess-style-guess-variable "guess-style")
 ;(autoload 'guess-style-guess-all "guess-style" nil t)
 
-;use chrome as default browser on laptop
-(when (string-match "destructor" system-name)
-  (setq flymake-js-rhino-jar "/usr/share/java/js.jar")
-  (setq flymake-js-rhino-use-jslint t)
-  (setq flymake-js-rhino-jslint "/home/jdd/workspace/jslint.el/jslint.js")
-  (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program "chromium"))
+(if (string-match "destructor" system-name)
+    (progn
+      (setq flymake-js-rhino-jar "/usr/share/java/js.jar")
+      (setq browse-url-browser-function 'browse-url-generic
+            browse-url-generic-program "chromium")
+      (setq flymake-js-rhino-jslint "/home/jdd/workspace/jslint.el/jslint.js")
+      (setq browse-url-browser-function 'browse-url-generic
+            browse-url-generic-program "chromium"))
+  (progn
+    (setq flymake-js-rhino-jar "/Users/jdodds/Library/Java/Extensions/js.jar")
+    (setq flymake-js-rhino-jslint "/Users/jdodds/src/jslint.js")))
 (global-set-key [f3] 'flymake-goto-prev-error)
 (global-set-key [f4] 'flymake-goto-next-error)
-
+(setq flymake-js-rhino-use-jslint t)
 
 ;indent styles for c modes (php atm)
 (defun my-c-mode-hoook ()
@@ -229,12 +259,4 @@
    '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
    '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
    '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black"))))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 70 :width normal :foundry "Adobe" :family "Courier"))))
- '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
- '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
- '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black")))))
+

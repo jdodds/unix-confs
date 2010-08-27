@@ -119,11 +119,12 @@
           (when nxmode
             (add-to-list mode-list (cons (car rec) nxmode))))))))
 
-(add-to-list 'auto-mode-alist '("\\.lzx\\'"       . laszlo-nxml-mumamo-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'"       . javascript-mode))
-;(add-to-list 'auto-mode-alist '("\\.js\\'"       . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.css\\'"      . css-mode))
-(add-to-list 'auto-mode-alist '("\\.rnc\\'"      . rnc-mode))
+(add-to-list 'auto-mode-alist '("\\.lzx\\'" . laszlo-nxml-mumamo-mode))
+;(add-to-list 'auto-mode-alist '("\\.js\\'"  . javascript-mode))
+;(add-to-list 'auto-mode-alist '("\\.js\\'"  . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'"  . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.rnc\\'" . rnc-mode))
 
 (majmodpri-sort-lists)
 
