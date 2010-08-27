@@ -29,6 +29,17 @@
       (backward-char) (insert "\n"))
     (indent-region (point-min) (point-max)))
   (message "Aahhhh"))
+
+(defun untabify-directory (dir)
+  (interactive "DDirectory Root:")
+  (dolist (file (directory-files dir t))
+    (if (file-regular-p file)
+        (with-temp-buffer
+          (find-file file)
+          (untabify-and-indent)
+          (save-buffer))
+      (message "Skipping directory %s." file))))
+
     
 
 ;(load-library "init_python")
