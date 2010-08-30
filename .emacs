@@ -5,7 +5,7 @@
 (iswitchb-mode t)    ;fuck yes
 (winner-mode 1)
 (display-battery-mode 1)
-
+(setq visible-bell t)
 (global-auto-revert-mode)
 
 (add-to-list 'load-path "~/.emacs.d/")

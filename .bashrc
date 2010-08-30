@@ -44,6 +44,7 @@ export DEV_SVN=$DEV/var/svn
 
 source $HOME/.git-completion.bash
 
+set bell-style none
 #ssh keys -- don't want to enter passphrases if we don't have to, ya know
 if type -P keychain >/dev/null ; then
     eval `keychain --eval --nogui -Q -q id_rsa`
