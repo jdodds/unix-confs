@@ -26,6 +26,13 @@ if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
 
     /usr/bin/urxvtd &
     /usr/bin/syndaemon -d &
+    trayer --edge top --align right --SetDockType true --SetPartialStrut true --width 25 --height 18 --margin 690 &
+    chromium &
+    emacs &
+    pyrana &
+    pidgin &
+    volwheel &
+
     exec ck-launch-session xmonad
 fi
 
