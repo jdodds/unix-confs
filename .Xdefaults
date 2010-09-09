@@ -7,6 +7,7 @@ URxvt.fading:	30
 URxvt.pointerBlank:	true
 URxvt.background:	black
 URxvt.font:	xft:inconsolata:pixelsize=15
+URxvt.visualBell: true
 dzen2.background:	#1a1a1a
 dzen2.foreground:	#ffffff
 xrenoise.use_xcursors:	1
