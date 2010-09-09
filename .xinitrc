@@ -17,6 +17,7 @@ fi
 
 xsetroot -cursor_name left_ptr
 xmodmap $HOME/.xmodmap
+xset -b
 
 if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
     # Start Thinkpad OSD daemon
@@ -32,6 +33,7 @@ if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
     pyrana &
     pidgin &
     volwheel &
+    skype &
 
     exec ck-launch-session xmonad
 fi
