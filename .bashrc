@@ -31,6 +31,7 @@ elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     alias mount='sudo mount'
     alias umount='sudo umount'
     alias eject='sudo eject'
+    alias shutdown='sudo shutdown'
     export WORKON_HOME=$HOME/.virtualenvs
     source /usr/bin/virtualenvwrapper.sh
     export PIP_VIRTUALENV_BASE=$WORKON_HOME

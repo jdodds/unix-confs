@@ -1,12 +1,15 @@
-URxvt.background: black
-URxvt.foreground: white
-URxvt.cursorColor: grey
-URxvt.fading: 30
-URxvt.font: xft:inconsolata:pixelsize=15
-URxvt.scrollBar: false
-URxvt.scrollTtyOutput: false
-URxvt.scrollTtyKeypress: true
-URxvt.pointerBlank: true
-
-dzen2.background: #1a1a1a
-dzen2.foreground: #ffffff
+URxvt.scrollBar:	false
+URxvt.foreground:	white
+URxvt.scrollTtyOutput:	false
+URxvt.cursorColor:	grey
+URxvt.scrollTtyKeypress:	true
+URxvt.fading:	30
+URxvt.pointerBlank:	true
+URxvt.background:	black
+URxvt.font:	xft:inconsolata:pixelsize=15
+dzen2.background:	#1a1a1a
+dzen2.foreground:	#ffffff
+xrenoise.use_xcursors:	1
+xrenoise.display:	:0.0
+xrenoise.display_resource:	0x00,0x00,0x1D,0x4B,0xD4,0x24,0x38,0x4B
+xrenoise.executable_path:	/usr/local/bin/renoise-2.5.1
