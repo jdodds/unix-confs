@@ -5,7 +5,7 @@
 (iswitchb-mode t)    ;fuck yes
 (winner-mode 1)
 (display-battery-mode 1)
-(setq visible-bell t)
+(setq ring-bell-function '(lambda () t))
 (global-auto-revert-mode)
 
 (add-to-list 'load-path "~/.emacs.d/")
@@ -40,7 +40,9 @@
           (save-buffer))
       (message "Skipping directory %s." file))))
 
-    
+;sql
+(setq comint-output-filter-functions
+      (function (lambda (STR) (comint-show-output))))
 
 ;(load-library "init_python")
 (autoload #'espresso-mode "espresso" "Start espresso-mode" t)
@@ -63,8 +65,8 @@
   (progn
     (setq flymake-js-rhino-jar "/Users/jdodds/Library/Java/Extensions/js.jar")
     (setq flymake-js-rhino-jslint "/Users/jdodds/src/jslint.js")))
-(global-set-key [f3] 'flymake-goto-prev-error)
-(global-set-key [f4] 'flymake-goto-next-error)
+(global-set-key [f5] 'flymake-goto-prev-error)
+(global-set-key [f6] 'flymake-goto-next-error)
 (setq flymake-js-rhino-use-jslint t)
 
 ;indent styles for c modes (php atm)
