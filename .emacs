@@ -56,6 +56,7 @@
 
 (if (string-match "destructor" system-name)
     (progn
+      (setq ctags-path "/usr/bin/ctags")
       (setq flymake-js-rhino-jar "/usr/share/java/js.jar")
       (setq browse-url-browser-function 'browse-url-generic
             browse-url-generic-program "chromium")
@@ -68,6 +69,18 @@
 (global-set-key [f5] 'flymake-goto-prev-error)
 (global-set-key [f6] 'flymake-goto-next-error)
 (setq flymake-js-rhino-use-jslint t)
+
+;tags
+(defun create-tags (tag-dir proj-dir)
+  (setq excludes "--exclude='TAGS*' --exclude='.#*' --exclude='.min.*'")
+  "Create a ctags file for a given directory"
+  (interactive "DSave In: \nDProject Directory")
+  (shell-command
+   (format "%s -f %s/TAGS.vim --fields=afKnsSzt %s -R %s" ctags-path tag-dir excludes proj-dir))
+  (shell-command
+   (format "%s -f %s/TAGS.emacs --fields=afKnsSzt %s -e -R %s" ctags-path tag-dir excludes proj-dir)))
+
+(setq tags-revert-without-query t)
 
 ;indent styles for c modes (php atm)
 (defun my-c-mode-hoook ()
