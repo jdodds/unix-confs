@@ -44,7 +44,7 @@ fi
 
 export DEV="jdodds@dev1.cgalvin.com"
 export SHA="cgd@jagger.sanbornhead.com"
-export DEV_SVN=$DEV/var/svn
+export DEV_SVN=svn+ssh://$DEV/var/svn
 
 source $HOME/.git-completion.bash
 
