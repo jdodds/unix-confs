@@ -24,14 +24,17 @@ if [[ $SYSTEM_TYPE =~ $MAC ]] ; then
     export JAGGER="$WORKSPACE/jagger/trunk/"
     export PATH=$PATH:/usr/local/mysql-5.1.48-osx10.6-x86_64/bin/
 elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
-    alias pacman='sudo pacman'
-    alias netcfg='sudo netcfg'
-    alias ifconfig='sudo ifconfig'
-    alias iwlist='sudo iwlist'
-    alias mount='sudo mount'
-    alias umount='sudo umount'
-    alias eject='sudo eject'
-    alias shutdown='sudo shutdown'
+    sudos=( pacman netcfg ifconfig iwlist iwconfig mount umount eject shutdown )
+    for command in ${sudos[@]}; do
+        alias $command="sudo $command"
+    done;
+    nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms evince emacs
+        audacity pyrana )
+    for command in ${nohups[@]}; do
+        logfile="$HOME/log/$command.log"
+        [ -f $logfile ] || touch $logfile
+        alias $command="nohup $command >> $logfile &"
+    done;
     export WORKON_HOME=$HOME/.virtualenvs
     source /usr/bin/virtualenvwrapper.sh
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
