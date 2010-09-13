@@ -31,6 +31,10 @@
 
 (require 'python)
 
+(defgroup virtualenv nil
+  "Custom variables for virtualenv"
+  :group 'python)
+
 (defvar virtualenv-postactivate-hook nil)
 (defvar virtualenv-postdeactivate-hook nil)
 
@@ -38,13 +42,19 @@
   "Use IPython interpreter when available in a virtual environment")
 
 (defcustom virtualenv-root-dir (concat (getenv "HOME") "/.virtualenvs")
-  "Default location for user's virtual environments")
+  "Default location for user's virtual environments"
+  :group 'virtualenv
+  :type 'directory)
 
 (defcustom virtualenv-ipython-flags '("-cl")
-  "Extra flags to pass to IPython interpreters")
+  "Extra flags to pass to IPython interpreters"
+  :group 'virtualenv
+  :type 'string)
 
 (defcustom virtualenv-python-flags '("-i")
-  "Extra flags to pass to Python interpreters")
+  "Extra flags to pass to Python interpreters"
+  :group 'virtualenv
+  :type 'string)
 
 (defvar virtualenv-active nil
   "The current active virtual environment or nil")
@@ -100,4 +110,11 @@
   (interactive)
   (virtualenv-deactivate-environment))
 
+(define-derived-mode virtualenv-mode python-mode "Virtualenv"
+  "Major mode for using python with virtualenv"
+  :group 'virtualenv
+  (message "venv bef active")
+  (virtualenv-activate)
+  (message "venv activate"))
+  
 (provide 'virtualenv)
