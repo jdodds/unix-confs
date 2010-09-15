@@ -34,6 +34,7 @@ if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
     pidgin &
     volwheel &
     skype &
+    $(cat ~/.fehbg)
 
     exec ck-launch-session xmonad
 fi
