@@ -136,8 +136,14 @@
 ;python
 (add-hook 'python-mode-hook
           '(lambda ()
-             (set-electrics)
-             (require 'virtualenv)))
+             (set-electrics)))
+
+(autoload 'virtualenv-mode "virtualenv"
+  "Major mode for integrating virtualenv with emacs" t)
+
+(add-to-list 'auto-mode-alist '("\\.py$" . virtualenv-mode))
+(add-to-list 'interpreter-mode-alist '("python" . virtualenv-mode))
+
 ;php
 (add-hook 'php-mode-hook
           'set-electrics)

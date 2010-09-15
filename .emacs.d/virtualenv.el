@@ -110,11 +110,14 @@
   (interactive)
   (virtualenv-deactivate-environment))
 
+;;;###autoload
 (define-derived-mode virtualenv-mode python-mode "Virtualenv"
   "Major mode for using python with virtualenv"
   :group 'virtualenv
-  (message "venv bef active")
-  (virtualenv-activate)
-  (message "venv activate"))
+  (unless virtualenv-active
+    (call-interactively 'virtualenv-activate))
+  (setq mode-name (concat "python["
+                          (car (cdr (cdr (split-string virtualenv-active "/"))))
+                          "]" )))
   
 (provide 'virtualenv)
