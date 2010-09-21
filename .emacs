@@ -58,6 +58,8 @@
 ;(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
 (load "~/.emacs.d/nxhtml/autostart.el")
 
+(add-to-list 'auto-mode-alist '("PKGBUILD" . sh-mode))
+
 ;automatically guess style based on the file we're opening
 ;(autoload 'guess-style-set-variable "guess-style" nil t)
 ;(autoload 'guess-style-guess-variable "guess-style")
