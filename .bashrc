@@ -29,7 +29,7 @@ elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
     for command in ${sudos[@]}; do
         alias $command="sudo $command"
     done;
-    nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms evince emacs
+    nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms emacs
         audacity pyrana )
     for command in ${nohups[@]}; do
         logfile="$HOME/log/$command.log"
