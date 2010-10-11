@@ -16,6 +16,8 @@
 
 (require 'psvn)
 
+
+
 (defun reb-query-replace (to-string)
   "Replace current RE from point with `query-replace-regexp'."
   (interactive
@@ -59,6 +61,8 @@
 (load "~/.emacs.d/nxhtml/autostart.el")
 
 (add-to-list 'auto-mode-alist '("PKGBUILD" . sh-mode))
+
+(require 'magit)
 
 ;automatically guess style based on the file we're opening
 ;(autoload 'guess-style-set-variable "guess-style" nil t)
@@ -278,6 +282,8 @@
   ;; If there is more than one, they won't work right.
  '(c-label-minimum-indentation 2)
  '(c-syntactic-indentation t)
+ '(markdown-command "markdown")
+ '(markdown-italic-underscore t)
  '(python-honour-comment-indentation nil)
  '(python-use-skeletons nil))
 (let ((height 
@@ -293,5 +299,5 @@
    '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
    '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black"))))))
 
-
 (put 'downcase-region 'disabled nil)
+
