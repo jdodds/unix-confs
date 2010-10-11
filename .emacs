@@ -16,6 +16,15 @@
 
 (require 'psvn)
 
+(defun reb-query-replace (to-string)
+  "Replace current RE from point with `query-replace-regexp'."
+  (interactive
+   (progn (barf-if-buffer-read-only)
+          (list (query-replace-read-to (reb-target-binding reb-regexp)
+                                       "Query replace"  t))))
+  (with-current-buffer reb-target-buffer
+    (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
+
 (defun untabify-and-indent ()
   (interactive)
   (untabify (point-min) (point-max))
@@ -48,6 +57,8 @@
 (autoload #'espresso-mode "espresso" "Start espresso-mode" t)
 ;(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
 (load "~/.emacs.d/nxhtml/autostart.el")
+
+(add-to-list 'auto-mode-alist '("PKGBUILD" . sh-mode))
 
 ;automatically guess style based on the file we're opening
 ;(autoload 'guess-style-set-variable "guess-style" nil t)
@@ -127,11 +138,18 @@
 ;python
 (add-hook 'python-mode-hook
           '(lambda ()
-             (set-electrics)
              (require 'virtualenv)))
+;             (set-electrics)))
+
+(autoload 'virtualenv-mode "virtualenv"
+  "Major mode for integrating virtualenv with emacs" t)
+
+(add-to-list 'auto-mode-alist '("\\.py$" . virtualenv-mode))
+(add-to-list 'interpreter-mode-alist '("python" . virtualenv-mode))
+
 ;php
-(add-hook 'php-mode-hook
-          'set-electrics)
+;(add-hook 'php-mode-hook
+;          'set-electrics)
 
 (defun set-electrics ()
   "Set common-to-most-languages electric pairs"
@@ -275,3 +293,5 @@
    '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
    '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black"))))))
 
+
+(put 'downcase-region 'disabled nil)

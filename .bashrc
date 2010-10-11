@@ -24,7 +24,8 @@ if [[ $SYSTEM_TYPE =~ $MAC ]] ; then
     export JAGGER="$WORKSPACE/jagger/trunk/"
     export PATH=$PATH:/usr/local/mysql-5.1.48-osx10.6-x86_64/bin/
 elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
-    sudos=( pacman netcfg ifconfig iwlist iwconfig mount umount eject shutdown )
+    sudos=( pacman netcfg ifconfig iwlist iwconfig mount umount eject shutdown
+        apachectl )
     for command in ${sudos[@]}; do
         alias $command="sudo $command"
     done;
