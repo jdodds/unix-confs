@@ -142,7 +142,8 @@
 ;python
 (add-hook 'python-mode-hook
           '(lambda ()
-             (set-electrics)))
+             (require 'virtualenv)))
+;             (set-electrics)))
 
 (autoload 'virtualenv-mode "virtualenv"
   "Major mode for integrating virtualenv with emacs" t)
@@ -151,8 +152,8 @@
 (add-to-list 'interpreter-mode-alist '("python" . virtualenv-mode))
 
 ;php
-(add-hook 'php-mode-hook
-          'set-electrics)
+;(add-hook 'php-mode-hook
+;          'set-electrics)
 
 (defun set-electrics ()
   "Set common-to-most-languages electric pairs"
@@ -297,3 +298,6 @@
    '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
    '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
    '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black"))))))
+
+(put 'downcase-region 'disabled nil)
+
