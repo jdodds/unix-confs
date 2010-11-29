@@ -2,10 +2,11 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName(setWMName)
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run
-import XMonad.Util.EZConfig(additionalKeys)
-import System.IO    
+import System.IO
+import qualified Data.Map as M
 
 main=do
   conky <- spawnPipe myConkyBar
@@ -24,9 +25,16 @@ main=do
                               ,className =? "Chromium" --> doShift "1"
                               ,manageDocks
                               ]
+    , keys = newKeys
     --    , logHook = dynamicLogWithPP $ defaultPP { ppOutput = hPutStrLn statusBar }
     }
 
+newKeys x =  M.union (keys defaultConfig x) (M.fromList (myKeys x))
+
+myKeys conf@(XConfig {XMonad.modMask = modm}) =
+    [ ((modm,  xK_z), setWMName "LG3D")
+    , ((modm, xK_Z), setWMName "XMonad")
+    ]
 
 myBarBgColor = "#1a1a1a"
 myBarFgColor = "#e0e0e0"
