@@ -18,30 +18,20 @@ alias TOMORROW='date -v +1d +"%Y-%m-%d"'
 alias svntodaylog='svn log -r {$(TODAY)}:{$(TOMORROW)}'
 alias svndiff='svn diff | colordiff | less'
 
-if [[ $SYSTEM_TYPE =~ $MAC ]] ; then
-    alias mvx='sudo cp -r * /Applications/XAMPP/xamppfiles/htdocs'
-    export MARQUEE="$WORKSPACE/marquee/trunk/www"
-    export JAGGER="$WORKSPACE/jagger/trunk/"
-    export PATH=$PATH:/usr/local/mysql-5.1.48-osx10.6-x86_64/bin/
-elif [[ $SYSTEM_TYPE =~ $LAPTOP ]] ; then
-    sudos=( pacman netcfg ifconfig iwlist iwconfig mount umount eject shutdown
-        apachectl )
-    for command in ${sudos[@]}; do
-        alias $command="sudo $command"
-    done;
-    nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms emacs
-        audacity pyrana )
-    for command in ${nohups[@]}; do
-        logfile="$HOME/log/$command.log"
-        [ -f $logfile ] || touch $logfile
-        alias $command="nohup $command >> $logfile &"
-    done;
-    export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/bin/virtualenvwrapper.sh
-    export PIP_VIRTUALENV_BASE=$WORKON_HOME
-    export PIP_RESPECT_VIRTUALENV=true
-    export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
-fi
+sudos=( pacman netcfg ifconfig iwlist iwconfig mount umount eject shutdown
+    apachectl )
+for command in ${sudos[@]}; do
+    alias $command="sudo $command"
+done;
+nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms emacs
+    audacity pyrana )
+for command in ${nohups[@]}; do
+    logfile="$HOME/log/$command.log"
+    [ -f $logfile ] || touch $logfile
+    alias $command="nohup $command >> $logfile &"
+done;
+export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
+
 
 export DEV="jdodds@dev1.cgalvin.com"
 export SHA="cgd@jagger.sanbornhead.com"
