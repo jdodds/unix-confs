@@ -10,3 +10,4 @@
 .xmonad/xmonad.o
 .#*
 *elc
+.emacs.d/share/
