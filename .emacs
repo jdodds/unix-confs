@@ -9,10 +9,19 @@
 (global-auto-revert-mode)
 
 (add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/yasnippet/")
+
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
-(require 'yasnippet-bundle)
+;; (require 'yasnippet)
+;; (yas/initialize)
+;(yas/load-directory "~/.emacs.d/yasnippet/snippets")
+;; (setq yas/root-directory '("~/workspace/qooxdoo.el/snippets"
+;;                            "~/.emacs.d/yasnippet/snippets"))
+                           
+;(mapc 'yas/load-directory yas/root-directory)
+      
 
 (require 'psvn)
 
@@ -64,6 +73,22 @@
 
 (require 'magit)
 
+; project definitions
+;; (require 'eproject)
+;; (require 'eproject-extras)
+(require 'espect)
+(require 'qooxdoo)
+
+(setq qooxdoo-workspace-path "~/workspace")
+(setq qooxdoo-project-paths
+      '("/cogneato/trunk/qx/controlcenter"
+        "/foo/bar/baz/"))
+(setq espect-buffer-settings
+      '(((:qooxdoo)
+         (lambda ()
+           (qooxdoo-minor-mode t)))))
+
+
 ;automatically guess style based on the file we're opening
 ;(autoload 'guess-style-set-variable "guess-style" nil t)
 ;(autoload 'guess-style-guess-variable "guess-style")
@@ -72,18 +97,13 @@
 (if (string-match "destructor" system-name)
     (progn
       (setq ctags-path "/usr/bin/ctags")
-      (setq flymake-js-rhino-jar "/usr/share/java/js.jar")
       (setq browse-url-browser-function 'browse-url-generic
             browse-url-generic-program "chromium")
-      (setq flymake-js-rhino-jslint "/home/jdd/workspace/jslint.el/jslint.js")
       (setq browse-url-browser-function 'browse-url-generic
-            browse-url-generic-program "chromium"))
-  (progn
-    (setq flymake-js-rhino-jar "/Users/jdodds/Library/Java/Extensions/js.jar")
-    (setq flymake-js-rhino-jslint "/Users/jdodds/src/jslint.js")))
+            browse-url-generic-program "chromium")))
 (global-set-key [f5] 'flymake-goto-prev-error)
 (global-set-key [f6] 'flymake-goto-next-error)
-(setq flymake-js-rhino-use-jslint t)
+
 
 ;tags
 (defun create-tags (tag-dir proj-dir)
@@ -113,7 +133,7 @@
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hoook)
 ;(add-hook 'c-mode-common-hook 'guess-style-guess-all)
-(add-hook 'find-file-hook 'flymake-mode)
+;(add-hook 'find-file-hook 'flymake-mode)
 ;keep TRAMP from saving backups
 (add-to-list 'backup-directory-alist
              (cons tramp-file-name-regexp nil))
@@ -139,17 +159,25 @@
 (define-auto-insert "\.py" "python-template.py")
 (define-auto-insert "\.js" "javascript-template.js")
 
+;javascript
+(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
+
+(add-hook 'espresso-mode-hook 'espresso-custom-setup)
+(defun espresso-custom-setup ()
+  (moz-minor-mode 1))
+
 ;python
-(add-hook 'python-mode-hook
-          '(lambda ()
-             (require 'virtualenv)))
+;(remove-hook 'python-mode-hook)
+;; (remove-hook 'python-mode-hook
+;;           '(lambda ()
+;;              (require 'virtualenv)))
 ;             (set-electrics)))
 
 (autoload 'virtualenv-mode "virtualenv"
   "Major mode for integrating virtualenv with emacs" t)
 
-(add-to-list 'auto-mode-alist '("\\.py$" . virtualenv-mode))
-(add-to-list 'interpreter-mode-alist '("python" . virtualenv-mode))
+;; (remove-list 'auto-mode-alist '("\\.py$" . virtualenv-mode))
+;; (add-to-list 'interpreter-mode-alist '("python" . virtualenv-mode))
 
 ;php
 ;(add-hook 'php-mode-hook
@@ -282,6 +310,9 @@
   ;; If there is more than one, they won't work right.
  '(c-label-minimum-indentation 2)
  '(c-syntactic-indentation t)
+ '(espresso-auto-indent-flag nil)
+ '(espresso-expr-indent-offset 0)
+ '(espresso-indent-level 4)
  '(markdown-command "markdown")
  '(markdown-italic-underscore t)
  '(python-honour-comment-indentation nil)
@@ -301,3 +332,12 @@
 
 (put 'downcase-region 'disabled nil)
 
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 70 :width normal :foundry "Adobe" :family "Courier"))))
+ '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
+ '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
+ '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black")))))

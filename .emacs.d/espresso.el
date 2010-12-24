@@ -1697,7 +1697,7 @@ the characters forming the beginning and end of the literal")
 (defconst espresso--possibly-braceless-keyword-re
   (espresso--regexp-opt-symbol
    '("catch" "do" "else" "finally" "for" "if" "try" "while" "with"
-     "each"))
+     "each" "case"))
   "Regular expression matching keywords that are optionally
   followed by an opening brace.")
 

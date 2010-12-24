@@ -29,11 +29,19 @@ main=do
     --    , logHook = dynamicLogWithPP $ defaultPP { ppOutput = hPutStrLn statusBar }
     }
 
-newKeys x =  M.union (keys defaultConfig x) (M.fromList (myKeys x))
 
-myKeys conf@(XConfig {XMonad.modMask = modm}) =
-    [ ((modm,  xK_z), setWMName "LG3D")
-    , ((modm, xK_Z), setWMName "XMonad")
+defKeys = keys defaultConfig
+delKeys x = foldr M.delete (defKeys x) (toRemove x)
+newKeys x = foldr (uncurry M.insert) (delKeys x) (toAdd x)
+
+toRemove x =
+   [ (modMask x, xK_p )
+   ]
+
+toAdd x = 
+    [ ((mod4Mask,  xK_z), setWMName "LG3D")
+    , ((mod4Mask, xK_Z), setWMName "XMonad")
+    , ((mod4Mask, xK_p), spawn myDmenuLaunch)
     ]
 
 myBarBgColor = "#1a1a1a"
@@ -43,6 +51,8 @@ myDzenOpts = "-fg '" ++ myBarFgColor ++ "' -bg '" ++ myBarBgColor ++ "' -h '16'"
 myStatusBar = "dzen2 -w 655 -ta l " ++ myDzenOpts
                 
 myConkyBar = "conky | dzen2 -e 'onstart=lower' -w '690' -x '750' -ta r " ++ myDzenOpts
+
+myDmenuLaunch = "dmenu_run -b"         
 
 
 

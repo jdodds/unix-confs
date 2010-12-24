@@ -11,3 +11,5 @@
 .#*
 *elc
 .emacs.d/share/
+.authinfo
+.gnus.el

@@ -18,6 +18,7 @@ fi
 xsetroot -cursor_name left_ptr
 xmodmap $HOME/.xmodmap
 xset -b
+feh --bg-scale $HOME/back.png
 
 if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
     # Start Thinkpad OSD daemon

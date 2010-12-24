@@ -7,6 +7,7 @@ export DISPLAY=:0.0
 export EDITOR=/usr/bin/emacs
 export WORKSPACE="$HOME/workspace"
 export GIT_EDITOR=emacsclient
+export SVN_EDITOR=nano
 
 alias ls='ls -G'
 alias less='less -r'
