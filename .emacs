@@ -340,4 +340,5 @@
  '(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 70 :width normal :foundry "Adobe" :family "Courier"))))
  '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
  '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "black"))))
- '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black")))))
+ '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "black"))))
+ '(smerge-refined-change ((t (:background "red")))))
