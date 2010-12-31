@@ -26,17 +26,17 @@ for command in ${sudos[@]}; do
 done;
 nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms emacs
     audacity pyrana )
-for command in ${nohups[@]}; do
-    logfile="$HOME/log/$command.log"
-    [ -f $logfile ] || touch $logfile
-    alias $command="nohup $command >> $logfile &"
-done;
-export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
+#for command in ${nohups[@]}; do
+#    logfile="$HOME/log/$command.log"
+#    [ -f $logfile ] || touch $logfile
+#    alias $command="nohup $command >> $logfile &"
+#done;
+#export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
 
 
-export DEV="jdodds@dev1.cgalvin.com"
-export SHA="cgd@jagger.sanbornhead.com"
-export DEV_SVN=svn+ssh://$DEV/var/svn
+#export DEV="jdodds@dev1.cgalvin.com"
+#export SHA="cgd@jagger.sanbornhead.com"
+#export DEV_SVN=svn+ssh://$DEV/var/svn
 
 source $HOME/.git-completion.bash
 
