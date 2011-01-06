@@ -83,7 +83,9 @@
 (setq espect-buffer-settings
       '(((:qooxdoo)
          (lambda ()
-           (qooxdoo-minor-mode t)))))
+           (qooxdoo-minor-mode t)
+           (setq indent-tabs-mode t)
+           (setq tab-width 4)))))
 
 
 ;automatically guess style based on the file we're opening
@@ -117,8 +119,6 @@
 ;indent styles for c modes (php atm)
 (defun my-c-mode-hoook ()
   (c-set-style "awk")
-  (setq tab-width 2
-        indent-tabs-mode nil)
   (c-toggle-hungry-state 1)
   (c-toggle-auto-state 1)
   (c-set-offset 'arglist-close 0)
@@ -177,8 +177,8 @@
 ;; (add-to-list 'interpreter-mode-alist '("python" . virtualenv-mode))
 
 ;php
-;(add-hook 'php-mode-hook
-;          'set-electrics)
+(add-hook 'php-mode-hook
+          'set-electrics)
 
 (defun set-electrics ()
   "Set common-to-most-languages electric pairs"
@@ -213,10 +213,8 @@
 (setq truncate-partial-width-windows nil)
 
 (setq-default fill-column 80)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
 
-(auto-fill-mode 1)
+(auto-fill-mode t)
 
 (require 'tramp)
 
@@ -313,33 +311,42 @@
  '(markdown-command "markdown")
  '(markdown-italic-underscore t)
  '(python-honour-comment-indentation nil)
- '(python-use-skeletons nil))
-(let ((height 
-       (cond ((string-match "destructor" system-name) 70)
-             (t 110))))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   `(default ((t
-               (:stipple nil
-                :background "black"
-                :foreground "white"
-                :inverse-video nil
-                :box nil
-                :strike-through nil
-                :overline nil
-                :underline nil
-                :slant normal
-                :weight normal
-                :height ,height
-                :width normal
-                :foundry "Adobe"
-                :family "Courier"))))
-   '(mmm-default-submode-face ((t
-                                (:background "gray85"
-                                 :foreground "black"))))
-   '(mumamo-background-chunk-major ((((class color)
-                                      (min-colors 88)
-                                      (background dark)))))))
+ '(python-use-skeletons nil)
+ '(sql-database "cogneato_dev")
+ '(sql-mysql-program "/usr/local/bin/mysql")
+ '(sql-server "cogneato.local"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ `(default
+    ((t
+    (:stipple nil
+     :background "black"
+     :foreground "white"
+     :inverse-video nil
+     :box nil
+     :strike-through nil
+     :overline nil
+     :underline nil
+     :slant normal
+     :weight normal
+     :height 110
+     :width normal
+     :foundry "Adobe"
+     :family "Courier"))))
+ '(mmm-default-submode-face
+   ((t
+     (:background "gray85"
+      :foreground "black"))))
+ '(mumamo-background-chunk-major
+   ((((class color)
+      (min-colors 88)
+      (background dark)))))
+ '(mumamo-background-chunk-submode1
+   ((((class color)
+      (min-colors 88)
+      (background dark))
+     nil))))
+

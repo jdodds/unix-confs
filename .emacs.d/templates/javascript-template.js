@@ -1,2 +1,10 @@
-/*global $ */
-/*jslint indent:2, browser:true, devel:true, maxlen:80 */
+/*
+ *
+ * Copyright:
+ *   (c) 2010 Cogneato incorporated
+ *
+ * Authors:
+ *   Jeremiah Dodds
+ *
+ */
+
