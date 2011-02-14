@@ -13,6 +13,15 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
+
+(defun insert-date (prefix)
+  "Insert the current date. With prefix-argument, use ISO format. With
+   two prefix arguments, write out the day and month name."
+  (interactive "P")
+  (let ((format "%A, %d. %B %Y")
+	(system-time-locale "en_US"))
+    (insert (format-time-string format))))
+
 (defun uniq-lines (beg end)
   "Unique lines in region.
 Called from a program, there are two arguments:
@@ -92,19 +101,26 @@ BEG and END (region to sort)."
 ; project definitions
 ;; (require 'eproject)
 ;; (require 'eproject-extras)
-(require 'espect)
+;(require 'espect)
 (require 'qooxdoo)
+(add-hook 'qooxdoo-project-file-visit-hook
+	  '(lambda ()
+	     (setq whitespace-action '("auto-cleanup"))
+	     (auto-fill-mode t)
+	     (setq indent-tabs-mode nil)
+	     (setq espresso-indent-level 4)
+	     (setq tab-width 4)))
 
-(setq qooxdoo-workspace-path "~/workspace")
-(setq qooxdoo-project-paths
-      '("/cogneato/trunk/qx/controlcenter"
-        "/foo/bar/baz/"))
-(setq espect-buffer-settings
-      '(((:qooxdoo)
-         (lambda ()
-           (qooxdoo-minor-mode t)
-           (setq indent-tabs-mode t)
-           (setq tab-width 4)))))
+;(setq qooxdoo-workspace-path "~/workspace")
+;(setq qooxdoo-project-paths
+;      '("/cogneato/trunk/qx/controlcenter"
+;        "/foo/bar/baz/"))
+;(setq espect-buffer-settings
+;      '(((:qooxdoo)
+;         (lambda ()
+;           (qooxdoo-minor-mode t)
+;           (setq indent-tabs-mode t)
+;           (setq tab-width 4)))))
 
 
 ;automatically guess style based on the file we're opening
@@ -141,9 +157,9 @@ BEG and END (region to sort)."
   (c-toggle-hungry-state 1)
   (c-toggle-auto-state 1)
   (c-set-offset 'arglist-close 0)
-  (setq indent-tabs-mode t)
+  (setq indent-tabs-mode nil)
   (setq tab-width 4)
-  (setq c-basic-offset 2))
+  (setq c-basic-offset 4))
 
 ;geben -- xdebug for php and all that
 (add-to-list 'load-path "~/.emacs.d/geben/")
@@ -337,37 +353,14 @@ BEG and END (region to sort)."
  '(sql-mysql-program "/usr/local/bin/mysql")
  '(sql-server "cogneato.local"))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- `(default
-    ((t
-    (:stipple nil
-     :background "black"
-     :foreground "white"
-     :inverse-video nil
-     :box nil
-     :strike-through nil
-     :overline nil
-     :underline nil
-     :slant normal
-     :weight normal
-     :height 110
-     :width normal
-     :foundry "Adobe"
-     :family "Courier"))))
- '(mmm-default-submode-face
-   ((t
-     (:background "gray85"
-      :foreground "black"))))
- '(mumamo-background-chunk-major
-   ((((class color)
-      (min-colors 88)
-      (background dark)))))
- '(mumamo-background-chunk-submode1
-   ((((class color)
-      (min-colors 88)
-      (background dark))
-     nil))))
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "Adobe" :family "Courier"))))
+ '(mmm-default-submode-face ((t (:background "gray85" :foreground "black"))))
+ '(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)))))
+ '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) nil)))
+ '(mumamo-background-chunk-submode2 ((t (:foreground "#ffbb00")))))
 
+(put 'upcase-region 'disabled nil)
