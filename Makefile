@@ -1,5 +1,6 @@
-install-jdd: install-common install-extras
-install-musicmaker: install-common
+install-jdd: install-common install-linux install-work install-extras
+install-musicmaker: install-common install-linux
+install-workmac: install-common install-work
 
 install-common:
 	ln -sf $(realpath .bashrc) $(HOME)
@@ -10,6 +11,9 @@ install-common:
 	ln -sf $(realpath .gitignore) $(HOME)
 	ln -sf $(realpath .screenrc) $(HOME)
 	ln -sf $(realpath .profile) $(HOME)
+	ln -sf $(realpath .subversion) $(HOME)
+
+install-linux:
 	ln -sf $(realpath .Xdefaults) $(HOME)
 	ln -sf $(realpath .xinitrc) $(HOME)
 	ln -sf $(realpath .xmodmap) $(HOME)
@@ -17,5 +21,7 @@ install-common:
 install-extras:
 	ln -sf $(realpath .conkyrc) $(HOME)
 	ln -sf $(realpath .dzen) $(HOME)
-	ln -sf $(realpath hours.org) $(HOME)
 	ln -sf $(realpath .xmonad) $(HOME)
+
+install-work:
+	ln -sf $(realpath hours.org) $(HOME)
