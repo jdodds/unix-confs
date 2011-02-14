@@ -1,44 +1,42 @@
 ;;; qooxdoo.el --- helper functions for working with qooxdoo
 
-;; Copyright (C) 2010  Jeremiah Dodds
-
 ;; Author: Jeremiah Dodds <jeremiah.dodds@gmail.com>
 ;; Keywords: convenience, docs
 
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
+;; Copyright (C) 2011,  Jeremiah Dodds
+;; All rights reserved.
 
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
+;; Redistribution and use in source and binary forms, with or without
+;; modification, are permitted provided that the following conditions are met:
 
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;; Redistributions of source code must retain the above copyright notice, this
+;; list of conditions and the following disclaimer.  Redistributions in binary
+;; form must reproduce the above copyright notice, this list of conditions and
+;; the following disclaimer in the documentation and/or other materials provided
+;; with the distribution.  Neither the name of Jeremiah Dodds nor the names
+;; of its contributors may be used to endorse or promote products derived from
+;; this software without specific prior written permission.
+
+;; THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+;; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+;; IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+;; ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+;; LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+;; CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+;; SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+;; INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+;; CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+;; POSSIBILITY OF SUCH DAMAGE.
 
 ;;; Commentary:
 
-;; The cleanest way I've found to load this so for is using eproject in
-;; combination with espect. see <https://github.com/jrockway/eproject> and
-;; <https://github.com/rafl/espect>. Something like:
+;; You'll need eproject, see <https://github.com/jrockway/eproject>.
 
-;; (require 'eproject)
-;; (define-project-type qooxdoo (generic)
-;;   (and (look-for "generator.py")
-;;        (look-for "Manifest.json")
-;;        (look-for "config.json"))
-;;   :relevant-files ("\\.js$"))
-;;
-;; (require 'espect)
-;; (setq espect-buffer-settings
-;;       '(((:project "qooxdoo")
-;;          (lambda ()
-;;            (require 'qooxdoo)
-;;            (qooxdoo-minor-mode t)))))
+;; After that, just (require 'qooxdoo) in your .emacs and you should be good to
+;; go. By default, "generate.py source" will be run each time you save a file,
+;; and there's a handy api lookup variable bound to C-c C-f.
 
-;; in your .emacs should do just fine.
 ;;; Code:
 
 ;;;###autoload
@@ -60,50 +58,63 @@
   :type 'string
   :group 'qooxdoo)
 
-(defcustom qooxdoo-js-mode 'espresso-mode
-  "The major mode used for javascript"
-  :type 'symbol
-  :group 'qooxdoo)
-
-(defcustom qooxdoo-workspace-path nil
-  "If you store your code under a shared root, you can put it here"
+(defcustom qooxdoo-default-generate-job "source"
+  "The default job to have generate.py run"
   :type 'string
   :group 'qooxdoo)
 
-(defcustom qooxdoo-project-paths nil
-  "A list of paths containing qooxdoo projects.
-These are prefixed with `qooxdoo-workspace-path'"
+(defcustom qooxdoo-compile-on-save t
+  "Whether or not to auto-run compile when a file in the project is saved"
+  :type 'boolean
+  :group 'qooxdoo)
+
+(defcustom qooxdoo-compile-read-command nil
+  "Whether compile should ask about the command it's about to run"
+  :type 'boolean
+  :group 'qooxdoo)
+
+(defcustom qooxdoo-compile-ask-about-save t
+  "Whether compile should ask about saving buffers that are modified"
+  :type 'boolean
+  :group 'qooxdoo)
+
+(defcustom qooxdoo-compile-auto-jump-to-first-error t
+  "Whether compile should open the first (and in our case, last) error when it
+  finds one"
+  :type 'boolean
+  :group 'qooxdoo)
+
+(defcustom qooxdoo-compile-scroll-output t
+  "Whether compile should automatically scroll its output"
+  :type 'boolean
+  :group 'qooxdoo)
+
+(defcustom qooxdoo-compile-error-alist-alist
+  '((qooxdoo-error
+     "[ .*-]+\\(Expected[^.]+\\)\. file:\\([^,]+\\), line:\\([^,]+\\), column:\\(.+\\)"
+     2 3 4 2 1)
+    (qooxdoo-warning-unknown-global-symbol
+     "[ .*-]+Warning: Hint: Unknown global symbol referenced: \\([^q][^x][^ ]+\\) (\\([^:]+\\):\\([^)]+\\)"
+     2 3 nil 1 1))
+  "The alist to send to compile mode. This thing, which you can read all about
+  in compile.el, roughly reads like 'match these things in the output from our
+  compiler, then takes these numbers to mean 'match number of file name, line
+  number, and line column', then 0 for info, 1 for warning, 2 for error, then
+  'match number to make a hyperlink'"
   :type 'list
   :group 'qooxdoo)
 
-;; set us up to load automatically, requres espect
-(require 'espect)
+(defcustom qooxdoo-code-root-prefix "source/class/"
+  "The path to where the main source of your app lives, relative to the
+  directory containing generate.py. You probably don't need to change this, but
+  if you're using a different layout than the qooxdoo default for some reason,
+  it might fill your needs.
 
-(defun qooxdoo-normalize-project-path (filename)
-  (let ((fname (file-name-as-directory filename)))
-    (if qooxdoo-workspace-path
-        (concat
-         (file-name-as-directory qooxdoo-workspace-path)
-         fname)
-      fname)))
+  This is used when finding which file compile should open for an error, in
+  combination with eproject-root and the file reported by the source job"
+  :type 'string
+  :group 'qooxdoo)
 
-(defun qooxdoo-make-search-targets ()
-  (mapcar
-   '(lambda (i)
-      (cons i (file-name-as-directory buffer-file-name)))
-   (mapcar
-    'qooxdoo-normalize-project-path
-    qooxdoo-project-paths)))
-
-(define-espect-rule :qooxdoo ()
-  (if buffer-file-name  ;; this gets called in the minibuffer for completion as well
-      (and
-       (or
-        (mapcar
-         '(lambda (i)
-            (string-match (car i) (cdr i)))
-         (qooxdoo-make-search-targets)))
-       (string-match "\\.js$" buffer-file-name))))
 
 ;; thingatpt and api search utils
 (require 'thingatpt)
@@ -124,9 +135,68 @@ These are prefixed with `qooxdoo-workspace-path'"
   (interactive)
   (browse-url (concat qooxdoo-api-url (thing-at-point 'qooxdoo))))
 
+;; eproject setup, allows us to load when appropriate and provides a nice point
+;; for adding criteria-specific behaviours
+(require 'eproject)
+(require 'eproject-extras)
+
+(define-project-type qooxdoo (generic)
+  (look-for "generate.py")
+  :relevant-files ("\\.js")
+  :irrelevant-files ("cache/" "source/script/" "inspector/" "build/")
+  :main-file "Application.js")
+
+(add-hook 'qooxdoo-project-file-visit-hook
+          'qooxdoo-minor-mode-on)
+
+(defun qooxdoo--parse-errors-filename-function (filename)
+  (format "%s.js" (expand-file-name
+                   (replace-regexp-in-string "\\." "/" filename)
+                   qooxdoo-project-code-root)))
+
+(defvar qooxdoo-project-code-root nil)
+
+(defun qooxdoo-setup-compilation-mode ()
+  (set (make-local-variable 'compile-command)
+       (format "%sgenerate.py %s" (eproject-root) qooxdoo-default-generate-job))
+
+  (setq compilation-read-command
+        qooxdoo-compile-read-command)
+
+  (setq compilation-ask-about-save
+        qooxdoo-compile-ask-about-save)
+  
+  (setq compilation-auto-jump-to-first-error
+        qooxdoo-compile-auto-jump-to-first-error)
+  
+  (setq compilation-scroll-output
+        qooxdoo-compile-scroll-output)
+  
+  (setq qooxdoo-project-code-root
+        (expand-file-name
+         qooxdoo-code-root-prefix
+         (eproject-root)))
+
+  (if qooxdoo-compile-on-save
+      (add-hook 'after-save-hook
+                '(lambda ()
+                   (with-current-buffer (buffer-name)
+		     (if (not compilation-in-progress)
+			 (call-interactively 'compile))))
+                nil t))
+  
+  (setq compilation-parse-errors-filename-function
+        'qooxdoo--parse-errors-filename-function)
+
+  (dolist (regexp-alist qooxdoo-compile-error-alist-alist)
+    (add-to-list 'compilation-error-regexp-alist-alist regexp-alist)
+    (add-to-list 'compilation-error-regexp-alist (car regexp-alist))))
+
+
 (defvar qooxdoo-mode-keymap (make-keymap)
   "keymap for qooxdoo-mode")
-(define-key qooxdoo-mode-keymap (kbd "C-c f") 'qooxdoo-search-api)
+
+(define-key qooxdoo-mode-keymap (kbd "C-c C-f") 'qooxdoo-search-api)
 
 ;;;###autoload
 (define-minor-mode qooxdoo-minor-mode
@@ -138,8 +208,8 @@ These are prefixed with `qooxdoo-workspace-path'"
 
 (defun qooxdoo-minor-mode-on ()
   (interactive)
-  (set (make-local-variable yas/mode-symbol) qooxdoo-js-mode)
-  (qooxdoo-minor-mode t))
+  (qooxdoo-minor-mode t)
+  (qooxdoo-setup-compilation-mode))
 
 (defun qooxdoo-minor-mode-off ()
   (interactive)
