@@ -89,12 +89,22 @@
   :type 'boolean
   :group 'qooxdoo)
 
+(defcustom qooxdoo-compile-dedicated-window t
+  "Whether compile mode should use a dedicated window"
+  :type 'boolean
+  :group 'qooxdoo)
+
+(defcustom qooxdoo-compile-dedicated-window-height 10
+  "The number of lines tall the dedicated compile window should be"
+  :type 'integer
+  :group 'qooxdoo)
+
 (defcustom qooxdoo-compile-error-alist-alist
   '((qooxdoo-error
      "[ .*-]+\\(Expected[^.]+\\)\. file:\\([^,]+\\), line:\\([^,]+\\), column:\\(.+\\)"
      2 3 4 2 1)
     (qooxdoo-warning-unknown-global-symbol
-     "[ .*-]+Warning: Hint: Unknown global symbol referenced: \\([^q][^x][^ ]+\\) (\\([^:]+\\):\\([^)]+\\)"
+     "[ .*-]+Warning: Hint: Unknown global symbol referenced: \\(\\(?:[^q][^x]\\)\\(?:[^d][^e][^b][^u][^g][^g][^e][^r]\\)[^ ]+\\) (\\([^:]+\\):\\([^)]+\\)"
      2 3 nil 1 1))
   "The alist to send to compile mode. This thing, which you can read all about
   in compile.el, roughly reads like 'match these things in the output from our
@@ -177,14 +187,29 @@
          qooxdoo-code-root-prefix
          (eproject-root)))
 
+  (defun compile-fn ()
+    (interactive)
+    (with-current-buffer (buffer-name)
+      (call-interactively 'compile)
+      (if qooxdoo-compile-dedicated-window
+	  (progn
+	    (setq cur (selected-window))
+	    (setq w (get-buffer-window "*compilation*"))
+	    (select-window w)
+	    (setq h (window-height w))
+	    (shrink-window (- h qooxdoo-compile-dedicated-window-height))
+	    (select-window cur)))))
+
+  (if qooxdoo-compile-dedicated-window
+      (add-hook 'compilation-mode-hook
+		'(lambda ()
+		   (if (not (get-buffer-window "*compilation*"))
+		       (split-window-vertically)))))
+  
+  
   (if qooxdoo-compile-on-save
       (add-hook 'after-save-hook
-                '(lambda ()
-                   (with-current-buffer (buffer-name)
-		     (if (not compilation-in-progress)
-			 (call-interactively 'compile))))
-                nil t))
-  
+		'compile-fn nil t))
   (setq compilation-parse-errors-filename-function
         'qooxdoo--parse-errors-filename-function)
 

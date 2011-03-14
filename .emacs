@@ -48,7 +48,11 @@ BEG and END (region to sort)."
 ;;                            "~/.emacs.d/yasnippet/snippets"))
                            
 ;(mapc 'yas/load-directory yas/root-directory)
-      
+(require 'yasnippet)
+(require 'django-html-mode)
+(require 'django-mode)
+(yas/load-directory "~/.emacs.d/snippets")
+(add-to-list 'auto-mode-alist '("\\.twig$" . django-html-mode))
 
 (require 'psvn)
 
@@ -103,6 +107,8 @@ BEG and END (region to sort)."
 ;; (require 'eproject-extras)
 ;(require 'espect)
 (require 'qooxdoo)
+
+(setq qooxdoo-api-url "http://cogneato.local/qx/controlcenter/api/index.html#")
 (add-hook 'qooxdoo-project-file-visit-hook
 	  '(lambda ()
 	     (setq whitespace-action '("auto-cleanup"))
