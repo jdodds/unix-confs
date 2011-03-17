@@ -38,12 +38,12 @@ nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms emacs
 #export SHA="cgd@jagger.sanbornhead.com"
 #export DEV_SVN=svn+ssh://$DEV/var/svn
 
-source $HOME/.git-completion.bash
+source "$HOME/.git-completion.bash"
 
 set bell-style none
 #ssh keys -- don't want to enter passphrases if we don't have to, ya know
 if type -P keychain >/dev/null ; then
-    eval `keychain --eval --nogui -Q -q id_rsa`
+    eval `keychain --eval --nogui -Q -q id_dsa`
 fi
 
 
