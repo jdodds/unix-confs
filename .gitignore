@@ -1,16 +1,6 @@
-.emacs.d/nxhtml/related/rhino.js
-.emacs.d/geben/.storage
-.emacs.d/geben/*/home/*
-.emacs.d/auto-save-list/
-.emacs.d/nxhtml/etc/schema/xhtml-loader.rnc
-.emacs.d/tramp
 .xmonad/xmonad-x86_64-linux
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi
 .xmonad/xmonad.o
 .#*
-*elc
 *~
-.emacs.d/share/
-.authinfo
-.gnus.el
