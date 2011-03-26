@@ -1,0 +1,3 @@
+[submodule "emacs-config"]
+	path = emacs-config
+	url = git+ssh://git@github.com/jdodds/emacs-config.git
