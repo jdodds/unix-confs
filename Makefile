@@ -5,8 +5,8 @@ install-workmac: install-common install-work
 install-common:
 	ln -sf $(realpath .bashrc) $(HOME)
 	ln -sf $(realpath .emacs) $(HOME)
-	ln -sf $(realpath .emacs.d) $(HOME)
-	ln -sf $(realpath .git-completion.bash) $(HOME)
+	ln -sf $(realpath emacs-config/.emacs.d) $(HOME)
+	ln -sf $(realpath emacs-config/.git-completion.bash) $(HOME)
 	ln -sf $(realpath .gitconfig) $(HOME)
 	ln -sf $(realpath .gitignore) $(HOME)
 	ln -sf $(realpath .screenrc) $(HOME)
