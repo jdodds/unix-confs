@@ -4,3 +4,7 @@
 .xmonad/xmonad.o
 .#*
 *~
+~*
+.#*
+.pyc
+.pyo
