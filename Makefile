@@ -12,6 +12,7 @@ install-common:
 	ln -sf "$(realpath .screenrc)" "$(HOME)"
 	ln -sf "$(realpath .profile)" "$(HOME)"
 	ln -sf "$(realpath .subversion)" "$(HOME)"
+	ln -sf "$(realpath .tmux.conf)" "$(HOME)"
 
 install-linux:
 	ln -sf "$(realpath .Xdefaults)" "$(HOME)"
@@ -25,3 +26,4 @@ install-extras:
 
 install-work:
 	ln -sf "$(realpath hours.org)" "$(HOME)"
+	ln -sf "$(realpath .bashrc.DARWIN)" "$(HOME)/.bash-machine"

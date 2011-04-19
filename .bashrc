@@ -26,6 +26,7 @@ for command in ${sudos[@]}; do
 done;
 nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms emacs
     audacity pyrana )
+
 #for command in ${nohups[@]}; do
 #    logfile="$HOME/log/$command.log"
 #    [ -f $logfile ] || touch $logfile
@@ -46,5 +47,8 @@ if type -P keychain >/dev/null ; then
     eval `keychain --eval --nogui -Q -q id_dsa`
 fi
 
+if [ -f $HOME/.bash-machine ]; then
+    source $HOME/.bash-machine
+fi
 
 PS1='[\u@\h \W]\$ '
