@@ -17,8 +17,8 @@ fi
 
 xsetroot -cursor_name left_ptr
 xmodmap $HOME/.xmodmap
-xset -b
-feh --bg-scale $HOME/back.png
+#xset -b
+#feh --bg-scale $HOME/back.png
 
 if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
     # Start Thinkpad OSD daemon
@@ -28,16 +28,17 @@ if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
 
     /usr/bin/urxvtd &
     /usr/bin/syndaemon -d &
-    $HOME/.dropbox-dist/dropboxd &
+#    $HOME/.dropbox-dist/dropboxd &
     trayer --edge top --align right --SetDockType true --SetPartialStrut true --width 25 --height 18 --margin 690 &
     chromium &
-    emacs &
-    pyrana &
-    pidgin &
-    volwheel &
-    skype &
-    $(cat ~/.fehbg)
-    exec ck-launch-session xmonad
+#    emacs &
+#    pyrana &
+#    pidgin &
+#    volwheel &
+#    skype &
+#    $(cat ~/.fehbg)
+#    exec ck-launch-session xmonad
+xmonad
 fi
 
 
