@@ -4,10 +4,10 @@ LAPTOP="destructor"
 
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:~/bin:/usr/local/bin
 export DISPLAY=:0.0
-export EDITOR=/usr/bin/emacs
+export EDITOR=emacsclient
 export WORKSPACE="$HOME/workspace"
 export GIT_EDITOR=emacsclient
-export SVN_EDITOR=nano
+export SVN_EDITOR=emacsclient
 
 alias ls='ls -G'
 alias less='less -r'
@@ -24,20 +24,6 @@ sudos=( pacman netcfg ifconfig iwlist iwconfig mount umount eject shutdown
 for command in ${sudos[@]}; do
     alias $command="sudo $command"
 done;
-nohups=( firefox chromium pidgin skype qjackctl rosegarden lmms emacs
-    audacity pyrana )
-
-#for command in ${nohups[@]}; do
-#    logfile="$HOME/log/$command.log"
-#    [ -f $logfile ] || touch $logfile
-#    alias $command="nohup $command >> $logfile &"
-#done;
-#export PATH=$PATH:/opt/java/jre/bin/:/usr/local/bin
-
-
-#export DEV="jdodds@dev1.cgalvin.com"
-#export SHA="cgd@jagger.sanbornhead.com"
-#export DEV_SVN=svn+ssh://$DEV/var/svn
 
 source "$HOME/.git-completion.bash"
 
