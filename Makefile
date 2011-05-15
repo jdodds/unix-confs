@@ -1,6 +1,6 @@
 install-jdd: install-common install-linux install-work install-extras
 install-musicmaker: install-common install-linux
-install-workmac: install-common install-work
+install-workmac: install-common install-mac install-work
 
 install-common:
 	ln -sf "$(realpath .bashrc)" "$(HOME)"
@@ -18,6 +18,10 @@ install-linux:
 	ln -sf "$(realpath .Xdefaults)" "$(HOME)"
 	ln -sf "$(realpath .xinitrc)" "$(HOME)"
 	ln -sf "$(realpath .xmodmap)" "$(HOME)"
+	ln -sf "$(realpath .tmux-linux.conf)" "$(HOME)/.tmux-local.conf"
+
+install-mac:
+	ln -sf "$(realpath .tmux-mac.conf" "$(HOME)/.tmux-local.conf"
 
 install-extras:
 	ln -sf "$(realpath .conkyrc)" "$(HOME)"
