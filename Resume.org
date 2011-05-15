@@ -1,0 +1,94 @@
+#+options: toc:1 timestamp:nil author:nil email:nil creator:nil
+#+latex_class: article
+#+TITLE:     Jeremiah Dodds
+#+AUTHOR:    Jeremiah Dodds
+#+EMAIL:     jeremiah.dodds@gmail.com
+#+DATE:      
+#+DESCRIPTION: Curriculum Vitae
+#+KEYWORDS: 
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:1 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:1 ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT: 
+
+#+begin_center
+| email: | jeremiah.dodds@gmail.com |
+| phone: | 00 + 1 + 330 + 3049558   |
+| web:   | [[https://github.com/jdodds][Github Account]]           |
+#+end_center
+
+[TABLE-OF-CONTENTS]
+
+* Work Experience
+
+** November 29 2010 - Curent :: [[http://cogneato.com][Cogneato, Inc]] 
++ Design and development of [[http://cogneato.com/technology][Cogneato Control Center]], making heavy use of [[http://qooxdoo.org][qooxdoo]] [[http://symfony.com][Symfony 2]], and [[http://www.doctrine-project.org][Doctrine 2]].
++ Administering several [[https://www.centos.org][CentOS 5]] servers.
+** March 2010 - October 2010 :: [[http://cgalvin.com][Christine Galvin Design, Inc]]
+Web development and system administration. Primarily wrote PHP, JavaScript,
+MySQL, and administrative scripts / project infrastructure and automation tools
+for a Linux and OSX environment.
+  - Designed and implemented a set of tools for automation of project creation,
+    including source control repository and database management.
+  - Designed and implemented a paint-like application making heavy use of
+    [[http://rapheljs.com][raphael.js]], [[http://www.imagemagick.org/script/index.php][ImageMagick]], [[http://codeigniter.com/][CodeIgniter]], [[http://www.doctrine-project.org/][Doctrine]], [[http://www.boutell.com/gd/][gd]], [[http://www.pdflib.com/][pdflib]], and [[http://jquery.com][jQuery]]
+  - Took over the development of the rest of the site that the paint app was
+    part of, and over the course of two months redid a large portion of the
+    backend, moving it to an MVC framework, to allow for the flexibility needed
+    by the site.
+  - Took over development of a web-based system for tracking information
+    relevant to the landfill industry.
+** December 2009 - March 2010 :: Freelance
+  - Various software and server administration tasks on a contractual
+    basis. Strong focus on web development and on refactoring and debugging
+    existing products.
+
+** February 2009 - December 2009 :: [[http://ultracar.co.uk/][Ultracar]]
+  - Designed and implemented a webapp for centralizing information needed by
+    salesmen in the car brokerage industry using [[http://www.cherrypy.org][CherryPy]] and [[http://jquery.com][jQuery]].
+
+* Languages
++ Python 
++ JavaScript
++ Lisp (common/e)
++ PHP5
+
+* Technologies / Software
++ Git - 3+ years of everyday use
++ SVN - 4+ years of as-needed use
++ Emacs - 6+ years of everyday use
+
+* Operating Systems
+** Linux
+  + More than a decade of experience running and administering Linux machines
+  + Experience syncing configurations across servers
+  + Experience writing project and infrastructure automation tools
+  + Experience creating customized live-cds from the kernel up
+  + Currently run Arch, and love it.
+** OSX
+  + Fine with the unix part.
+
+* Projects  
++ [[https://github.com/jdodds/qooxdoo.el][qooxdoo.el]], a minor mode for working with qooxdoo applications.
++ [[https://github.com/jdodds/feather][feather]], a sort of framework for small plugin-based applications
++ [[https://github.com/jdodds/pyrana/tree/rewrite-to-plugin-architecture][pyrana]], a small mp3 player written using feather
++ [[https://github.com/jdodds/startproject][startproject]], a utility for initial project templating within emacs
+
+* Miscellaneous
++ Native English speaker with excellent oral and written communication skills.
++ Passionate about improving the world, with a focus on utilizing modern
+  technologies for sustainable living.
++ Passion for finding beautiful solutions to problems, and expressing them
+  clearly through code.
++ Passion for learning, and for mastering the tools available to me.
+
+
+* Interests
++ Neuroscience
++ Music Creation
+
