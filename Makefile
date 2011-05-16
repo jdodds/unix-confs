@@ -21,7 +21,7 @@ install-linux:
 	ln -sf "$(realpath .tmux-linux.conf)" "$(HOME)/.tmux-local.conf"
 
 install-mac:
-	ln -sf "$(realpath .tmux-mac.conf" "$(HOME)/.tmux-local.conf"
+	ln -sf "$(realpath .tmux-mac.conf)" "$(HOME)/.tmux-local.conf"
 
 install-extras:
 	ln -sf "$(realpath .conkyrc)" "$(HOME)"
