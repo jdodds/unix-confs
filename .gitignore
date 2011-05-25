@@ -1,3 +1,9 @@
+Resume.html
+Resume.odt
+Resume.pdf
+Resume.rtf
+Resume.tex
+Resume.txt
 .xmonad/xmonad-x86_64-linux
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi
@@ -8,3 +14,4 @@
 .#*
 .pyc
 .pyo
+
