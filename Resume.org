@@ -3,18 +3,18 @@
 #+TITLE:     Jeremiah Dodds
 #+AUTHOR:    Jeremiah Dodds
 #+EMAIL:     jeremiah.dodds@gmail.com
-#+DATE:      
+#+DATE:
 #+DESCRIPTION: Curriculum Vitae
-#+KEYWORDS: 
+#+KEYWORDS:
 #+LANGUAGE:  en
 #+OPTIONS:   H:3 num:t toc:1 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+INFOJS_OPT: view:nil toc:1 ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+LINK_UP:   
-#+LINK_HOME: 
-#+XSLT: 
+#+LINK_UP:
+#+LINK_HOME:
+#+XSLT:
 
 #+begin_center
 | email: | jeremiah.dodds@gmail.com |
@@ -26,7 +26,7 @@
 
 * Work Experience
 
-** November 29 2010 - Curent :: [[http://cogneato.com][Cogneato, Inc]] 
+** November 29 2010 - Curent :: [[http://cogneato.com][Cogneato, Inc]]
 + Design and development of [[http://cogneato.com/technology][Cogneato Control Center]], making heavy use of [[http://qooxdoo.org][qooxdoo]] [[http://symfony.com][Symfony 2]], and [[http://www.doctrine-project.org][Doctrine 2]].
 + Administering several [[https://www.centos.org][CentOS 5]] servers.
 ** March 2010 - October 2010 :: [[http://cgalvin.com][Christine Galvin Design, Inc]]
@@ -53,7 +53,7 @@ for a Linux and OSX environment.
     salesmen in the car brokerage industry using [[http://www.cherrypy.org][CherryPy]] and [[http://jquery.com][jQuery]].
 
 * Languages
-+ Python 
++ Python
 + JavaScript
 + Lisp (common/e)
 + PHP5
@@ -73,7 +73,7 @@ for a Linux and OSX environment.
 ** OSX
   + Fine with the unix part.
 
-* Projects  
+* Projects
 + [[https://github.com/jdodds/qooxdoo.el][qooxdoo.el]], a minor mode for working with qooxdoo applications.
 + [[https://github.com/jdodds/feather][feather]], a sort of framework for small plugin-based applications
 + [[https://github.com/jdodds/pyrana/tree/rewrite-to-plugin-architecture][pyrana]], a small mp3 player written using feather
@@ -87,8 +87,6 @@ for a Linux and OSX environment.
   clearly through code.
 + Passion for learning, and for mastering the tools available to me.
 
-
 * Interests
 + Neuroscience
 + Music Creation
-
