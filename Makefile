@@ -13,6 +13,7 @@ install-common:
 	ln -sf "$(realpath .profile)" "$(HOME)"
 	ln -sf "$(realpath .subversion)" "$(HOME)"
 	ln -sf "$(realpath .tmux.conf)" "$(HOME)"
+	ln -sf "$(realpath .nethackrc)" "$(HOME)"
 
 install-linux:
 	ln -sf "$(realpath .Xdefaults)" "$(HOME)"

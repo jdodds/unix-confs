@@ -1,0 +1,4 @@
+OPTIONS=autopickup,boulder:0,DECGraphics,disclose:+i +a +v +g +c,fixinv
+OPTIONS=fruit:doobie,lit_corridor,msg_window:r,name:kaens,pickup_burden:B
+OPTIONS=pickup_types:!?$/=",pushweapon,showexp,showscore,standout,time
+OPTIONS=!tombstone,color,hilite_pet
