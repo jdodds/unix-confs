@@ -8,6 +8,7 @@ Resume.txt
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi
 .xmonad/xmonad.o
+*org_archive
 .#*
 *~
 ~*
