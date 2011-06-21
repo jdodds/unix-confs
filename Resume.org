@@ -78,6 +78,8 @@ for a Linux and OSX environment.
 + [[https://github.com/jdodds/feather][feather]], a sort of framework for small plugin-based applications
 + [[https://github.com/jdodds/pyrana/tree/rewrite-to-plugin-architecture][pyrana]], a small mp3 player written using feather
 + [[https://github.com/jdodds/startproject][startproject]], a utility for initial project templating within emacs
++ [[https://github.com/jdodds/JDDServerBundle][JDDServerBundle]], a utility for [[http://symfony.com][Symfony2]] apps that allows for running a local
+  webserver in development mode.
 
 * Miscellaneous
 + Native English speaker with excellent oral and written communication skills.
