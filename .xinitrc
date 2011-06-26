@@ -4,10 +4,6 @@
 #
 # Executed by startx (run your window manager from here)
 
-# exec gnome-session
-# exec startkde
-# exec startxfce4
-# ...or the Window Manager of your choice
 SYSTEM_TYPE=$(uname -a)
 MAC="Darwin"
 LAPTOP="destructor"
@@ -17,28 +13,28 @@ fi
 
 xsetroot -cursor_name left_ptr
 xmodmap $HOME/.xmodmap
-#xset -b
-#feh --bg-scale $HOME/back.png
 
 if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
-    # Start Thinkpad OSD daemon
-    if [ -x /usr/bin/tpb ] &&  [ -w /dev/nvram ] && [ -r /dev/nvram ]; then
-        /usr/bin/tpb -d
-    fi
+    trayer_cmd="/usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --width 25 --height 18 --margin 690"
 
-    /usr/bin/urxvtd &
-    /usr/bin/syndaemon -d &
-#    $HOME/.dropbox-dist/dropboxd &
-    trayer --edge top --align right --SetDockType true --SetPartialStrut true --width 25 --height 18 --margin 690 &
-    chromium &
-#    emacs &
-#    pyrana &
-#    pidgin &
-#    volwheel &
-#    skype &
-#    $(cat ~/.fehbg)
-#    exec ck-launch-session xmonad
+    [ -x /usr/bin/trayer ] && $trayer_cmd &
+    [ -x /usr/bin/ssh-add ] && /usr/bin/ssh-add $HOME/.ssh/id_dsa
+    [ -x /usr/bin/feh ] && $(cat ~/.fehbg)
+    [ -x /usr/bin/urxvtd ] && /usr/bin/urxvtd &
+    [ -x /usr/local/bin/emacs ] && /usr/local/bin/emacs &
+    [ -x /usr/bin/urxvtd ] && /usr/bin/urxvtd &
+
+    if [[ -n $(netcfg current) ]] ; then
+        to_run=(
+            /usr/bin/dropboxd
+            /usr/bin/chromium
+            /usr/bin/pidgin
+            /usr/bin/skype
+        )
+
+        for program in ${to_run[@]}; do
+            [ -x $program ] && $program &
+        done
+    fi
 xmonad
 fi
-
-
