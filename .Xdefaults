@@ -1,5 +1,6 @@
 URxvt.scrollBar:	false
 URxvt.foreground:	white
+URxvt.background:       black
 URxvt.scrollTtyOutput:	false
 URxvt.cursorColor:	grey
 URxvt.scrollTtyKeypress:	true
