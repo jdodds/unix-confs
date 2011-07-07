@@ -16,9 +16,9 @@ xmodmap $HOME/.xmodmap
 
 if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
     trayer_cmd="/usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --width 25 --height 18 --margin 690"
-
+    eval `ssh-agent`
     [ -x /usr/bin/trayer ] && $trayer_cmd &
-    [ -x /usr/bin/ssh-add ] && /usr/bin/ssh-add $HOME/.ssh/id_dsa
+#    [ -x /usr/bin/ssh-add ] && /usr/bin/ssh-add $HOME/.ssh/id_dsa
     [ -x /usr/bin/feh ] && $(cat ~/.fehbg)
     [ -x /usr/bin/urxvtd ] && /usr/bin/urxvtd &
     [ -x /usr/local/bin/emacs ] && /usr/local/bin/emacs &
