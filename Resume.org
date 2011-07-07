@@ -17,9 +17,9 @@
 #+XSLT:
 
 #+begin_center
-| email: | jeremiah.dodds@gmail.com |
-| phone: | 00 + 1 + 330 + 3049558   |
-| web:   | [[https://github.com/jdodds][Github Account]]           |
+| email: | jeremiah.dodds@gmail.com      |
+| phone: | 00 + 1 + 330 + 3049558        |
+| web:   | [[https://github.com/jdodds][Github]] [[http://www.linkedin.com/profile/view?id%3D25565609][LinkedIn]] [[http://stackoverflow.com/users/242853/jeremiahd][StackOverflow]] |
 #+end_center
 
 [TABLE-OF-CONTENTS]
