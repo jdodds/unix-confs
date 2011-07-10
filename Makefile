@@ -7,7 +7,6 @@ install-common:
 	ln -sf "$(realpath emacs-config/.emacs)" "$(HOME)"
 	ln -sf "$(realpath emacs-config/.emacs.d)" "$(HOME)"
 	ln -sf "$(realpath .git-completion.bash)" "$(HOME)"
-	ln -sf "$(realpath .gitconfig)" "$(HOME)"
 	ln -sf "$(realpath .gitignore)" "$(HOME)"
 	ln -sf "$(realpath .screenrc)" "$(HOME)"
 	ln -sf "$(realpath .profile)" "$(HOME)"
