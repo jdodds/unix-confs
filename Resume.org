@@ -26,7 +26,7 @@
 
 * Work Experience
 
-** November 29 2010 - Curent :: [[http://cogneato.com][Cogneato, Inc]]
+** November 29 2010 - August 2011 :: [[http://cogneato.com][Cogneato, Inc]]
 + Design and development of [[http://cogneato.com/technology][Cogneato Control Center]], making heavy use of [[http://qooxdoo.org][qooxdoo]] [[http://symfony.com][Symfony 2]], and [[http://www.doctrine-project.org][Doctrine 2]].
 + Administering several [[https://www.centos.org][CentOS 5]] servers.
 ** March 2010 - October 2010 :: [[http://cgalvin.com][Christine Galvin Design, Inc]]
@@ -54,14 +54,15 @@ for a Linux and OSX environment.
 
 * Languages
 + Python
++ Ruby
 + JavaScript
 + Lisp (common/e)
 + PHP5
 
 * Technologies / Software
-+ Git - 3+ years of everyday use
-+ SVN - 4+ years of as-needed use
-+ Emacs - 6+ years of everyday use
++ Git - 4+ years of everyday use
++ SVN - 5+ years of as-needed use
++ Emacs - 8+ years of everyday use
 
 * Operating Systems
 ** Linux
@@ -78,8 +79,6 @@ for a Linux and OSX environment.
 + [[https://github.com/jdodds/feather][feather]], a sort of framework for small plugin-based applications
 + [[https://github.com/jdodds/pyrana/tree/rewrite-to-plugin-architecture][pyrana]], a small mp3 player written using feather
 + [[https://github.com/jdodds/startproject][startproject]], a utility for initial project templating within emacs
-+ [[https://github.com/jdodds/JDDServerBundle][JDDServerBundle]], a utility for [[http://symfony.com][Symfony2]] apps that allows for running a local
-  webserver in development mode.
 
 * Miscellaneous
 + Native English speaker with excellent oral and written communication skills.

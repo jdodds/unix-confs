@@ -16,3 +16,5 @@ autoload -U colors && colors
 
 PROMPT="%{$fg[white]%}%B%n%b %{$reset_color%}%{$fg[green]%}%n%{$reset_color%}:%~
 "
+
+alias project="source $HOME/bin/project"
