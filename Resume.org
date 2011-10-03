@@ -7,7 +7,7 @@
 #+DESCRIPTION: Curriculum Vitae
 #+KEYWORDS:
 #+LANGUAGE:  en
-#+OPTIONS:   H:3 num:t toc:1 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+INFOJS_OPT: view:nil toc:1 ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
@@ -22,13 +22,15 @@
 | web:   | [[https://github.com/jdodds][Github]] [[http://www.linkedin.com/profile/view?id%3D25565609][LinkedIn]] [[http://stackoverflow.com/users/242853/jeremiahd][StackOverflow]] |
 #+end_center
 
-[TABLE-OF-CONTENTS]
-
 * Work Experience
 
 ** November 29 2010 - August 2011 :: [[http://cogneato.com][Cogneato, Inc]]
 + Design and development of [[http://cogneato.com/technology][Cogneato Control Center]], making heavy use of [[http://qooxdoo.org][qooxdoo]] [[http://symfony.com][Symfony 2]], and [[http://www.doctrine-project.org][Doctrine 2]].
-+ Administering several [[https://www.centos.org][CentOS 5]] servers.
++ Administering several [[https://www.centos.org][CentOS 5]] servers, wrote scripts to keep their
+  configurations synced, instituted security and login policies including
+  monitoring after a break-in, set up svn repo administration scripts, applyed
+  security patches to openssh et. al. as they came in. Overall security and ease
+  of administration of the servers was improved.
 ** March 2010 - October 2010 :: [[http://cgalvin.com][Christine Galvin Design, Inc]]
 Web development and system administration. Primarily wrote PHP, JavaScript,
 MySQL, and administrative scripts / project infrastructure and automation tools
@@ -63,6 +65,8 @@ for a Linux and OSX environment.
 + Git - 4+ years of everyday use
 + SVN - 5+ years of as-needed use
 + Emacs - 8+ years of everyday use
++ Scripting - 10+ years of writing scripts for POSIX systems, including BASH,
+  ksh, tcsh, and zsh scripts
 
 * Operating Systems
 ** Linux
@@ -75,6 +79,7 @@ for a Linux and OSX environment.
   + Fine with the unix part.
 
 * Projects
++ [[https://github.com/jdodds/polymorphic_as_table][polymorphic_as_table]], a plugin for ActiveRecord for working with legacy databases
 + [[https://github.com/jdodds/qooxdoo.el][qooxdoo.el]], a minor mode for working with qooxdoo applications.
 + [[https://github.com/jdodds/feather][feather]], a sort of framework for small plugin-based applications
 + [[https://github.com/jdodds/pyrana/tree/rewrite-to-plugin-architecture][pyrana]], a small mp3 player written using feather
