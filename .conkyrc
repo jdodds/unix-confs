@@ -44,4 +44,5 @@ ${if_match ${fs_used_perc /home} <= 25}^fg(limegreen)^i(/home/jdd/.dzen/icons/hd
 #Net
 ${if_up wlan0}^i(/home/jdd/.dzen/icons/net_up_03.xbm) ${upspeedf wlan0} ^i(/home/jdd/.dzen/icons/net_down_03.xbm) ${downspeedf wlan0} ${if_match ${wireless_link_qual_perc wlan0} <= 30}^fg(red)^i(/home/jdd/.dzen/icons/wifi_03.xbm)${else}^i(/home/jdd/.dzen/icons/wifi_03.xbm)${endif}^fg(\#e0e0e0) \
 ${endif}\
-${time %F %R}
+${time %F %R}\
+  ${ibm_temps 0}
