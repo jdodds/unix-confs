@@ -16,5 +16,9 @@ autoload -U colors && colors
 
 PROMPT="%{$fg[white]%}%B%n%b %{$reset_color%}%{$fg[green]%}%n%{$reset_color%}:%~
 "
+PATH=~/bin:$PATH
+ALTERNATE_EDITOR=emacs
+EDITOR=emacsclient
+VISUAL=emacsclient
 
 alias project="source $HOME/bin/project"
