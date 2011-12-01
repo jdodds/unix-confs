@@ -1,0 +1,18 @@
+[extensions]
+mq =
+color =
+progress =
+pager =
+hgext.graphlog =
+hgext.record =
+hgshelve = /home/jdd/workspace/hgshelve/hgshelve.py
+eol =
+
+[pager]
+pager = less -FRSX
+
+[diff]
+git = True
+
+[eol]
+native = LF
