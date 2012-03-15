@@ -1,18 +1,40 @@
 [extensions]
-mq =
 color =
-progress =
+eol =
+fetch =
+mq =
 pager =
+progress =
+rebase =
+bookmarks =
+hgactivity = /home/jdd/workspace/Hgactivity/activity
 hgext.graphlog =
+hgext.hgview = /home/jdd/workspace/hgview/hgext/hgview.py
+hgext.purge =
 hgext.record =
 hgshelve = /home/jdd/workspace/hgshelve/hgshelve.py
-eol =
+
+[bookmarks]
+track.current = True
+
+[color]
+mode = auto
+
+[hgview]
+dotradius = 6
+interface = curses
+changelogcolumns = ID,Log,Author,Date,Tags
 
 [pager]
 pager = less -FRSX
+attend = 
+ignore = version,update,revert,qv,hgview,pull,bisect,record,commit,push,recover,verify,serve,add
 
 [diff]
 git = True
 
 [eol]
 native = LF
+
+[ui]
+editor = launch-emacs-client

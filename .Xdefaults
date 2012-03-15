@@ -6,7 +6,7 @@ URxvt.cursorColor:	grey
 URxvt.scrollTtyKeypress:	true
 URxvt.fading:	30
 URxvt.pointerBlank:	true
-URxvt.transparent: true
+;URxvt.transparent: true
 URxvt.font:	xft:inconsolata:pixelsize=15
 URxvt.tintColor: blue
 Urxvt.shading: 10

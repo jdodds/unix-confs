@@ -1,24 +1,37 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/jdd/.zshrc'
+#
+# Sets Oh My Zsh options.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':omz:editor' keymap 'emacs'
 
-autoload -U promptinit && promptinit
-autoload -U colors && colors
+# Auto convert .... to ../..
+zstyle ':omz:editor' dot-expansion 'no'
 
-PROMPT="%{$fg[white]%}%B%n%b %{$reset_color%}%{$fg[green]%}%n%{$reset_color%}:%~
-"
-PATH=~/bin:$PATH
-ALTERNATE_EDITOR=emacs
-EDITOR=emacsclient
-VISUAL=emacsclient
+# Set case-sensitivity for completion, history lookup, etc.
+zstyle ':omz:*:*' case-sensitive 'no'
 
-alias project="source $HOME/bin/project"
+# Color output (auto set to 'no' on dumb terminals).
+zstyle ':omz:*:*' color 'yes'
+
+# Auto set the tab and window titles.
+zstyle ':omz:terminal' auto-title 'yes'
+
+# Set the plugins to load (see $OMZ/plugins/).
+zstyle ':omz:load' plugin 'archive' 'git'
+zstyle ':omz:load' plugin 'archive' 'ssh-agent'
+
+# Set the prompt theme to load.
+# Setting it to 'random' loads a random theme.
+# Auto set to 'off' on dumb terminals.
+zstyle ':omz:prompt' theme 'steeef'
+
+# This will make you shout: OH MY ZSHELL!
+source "$HOME/workspace/oh-my-zsh/init.zsh"
+source "$HOME/.rvm/scripts/rvm"
+
+# Customize to your needs...
+

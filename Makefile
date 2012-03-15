@@ -21,6 +21,7 @@ install-linux:
 	ln -sf "$(realpath .zshrc)" "$(HOME)"
 	ln -sf "$(realpath .bashrc.LINUX)" "$(HOME)/.bash-machine"
 	ln -sf "$(realpath .tmux-linux.conf)" "$(HOME)/.tmux-local.conf"
+	ln -sf "$(realpath .rspec)" "$(HOME)/.rspec"
 
 install-mac:
 	ln -sf "$(realpath .tmux-mac.conf)" "$(HOME)/.tmux-local.conf"
