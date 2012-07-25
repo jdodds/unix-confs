@@ -2,7 +2,7 @@ SYSTEM_TYPE=$(uname -a)
 MAC="Darwin"
 LAPTOP="destructor"
 
-export PATH=/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:~/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:~/bin:~/workspace/scala/bin:$PATH
 export DISPLAY=:0.0
 export EDITOR=emacsclient
 export WORKSPACE="$HOME/workspace"

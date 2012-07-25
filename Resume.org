@@ -1,5 +1,8 @@
 #+options: toc:1 timestamp:nil author:nil email:nil creator:nil
-#+latex_class: article
+#+LaTeX_CLASS: article
+#+LATEX_HEADER: \usepackage{color} \definecolor{bg}{RGB}{250,251,252} \pagecolor{bg}
+#+LATEX_HEADER \usepackage[scaled=20]{bookman} \usepackage[T1]{fontenc} \fontfamily{bookman}
+#+LATEX_HEADER \selectfont
 #+TITLE:     Jeremiah Dodds
 #+AUTHOR:    Jeremiah Dodds
 #+EMAIL:     jeremiah.dodds@gmail.com
@@ -7,7 +10,7 @@
 #+DESCRIPTION: Curriculum Vitae
 #+KEYWORDS:
 #+LANGUAGE:  en
-#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+INFOJS_OPT: view:nil toc:1 ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
@@ -18,12 +21,17 @@
 
 #+begin_center
 | email: | jeremiah.dodds@gmail.com      |
-| phone: | 00 + 1 + 330 + 3049558        |
 | web:   | [[https://github.com/jdodds][Github]] [[http://www.linkedin.com/profile/view?id%3D25565609][LinkedIn]] [[http://stackoverflow.com/users/242853/jeremiahd][StackOverflow]] |
+| phone: | 00 + 1 + 216 + 3084313        |
 #+end_center
 
 * Work Experience
-
+** November 2011 - March 2012 :: [[http://www.intheround.com][In The Round Design Group]]
++ Development and maintenance an of a DIY CMS system on a PHP/MySQL/IIS stack
++ Helped script the process of migrating a project-management database from
+  [[http://www.clockingit.com][ClockingIT]] to [[http://www.activecollab.com][activeCollab]], under heavy deadline pressure.
++ Heavily engaged with mentoring other team members on OOP in PHP5, TDD
+  practices, and debugging skills.
 ** November 29 2010 - August 2011 :: [[http://cogneato.com][Cogneato, Inc]]
 + Design and development of [[http://cogneato.com/technology][Cogneato Control Center]], making heavy use of [[http://qooxdoo.org][qooxdoo]] [[http://symfony.com][Symfony 2]], and [[http://www.doctrine-project.org][Doctrine 2]].
 + Administering several [[https://www.centos.org][CentOS 5]] servers, wrote scripts to keep their
@@ -36,37 +44,39 @@ Web development and system administration. Primarily wrote PHP, JavaScript,
 MySQL, and administrative scripts / project infrastructure and automation tools
 for a Linux and OSX environment.
   - Designed and implemented a set of tools for automation of project creation,
-    including source control repository and database management.
+	including source control repository and database management.
   - Designed and implemented a paint-like application making heavy use of
-    [[http://rapheljs.com][raphael.js]], [[http://www.imagemagick.org/script/index.php][ImageMagick]], [[http://codeigniter.com/][CodeIgniter]], [[http://www.doctrine-project.org/][Doctrine]], [[http://www.boutell.com/gd/][gd]], [[http://www.pdflib.com/][pdflib]], and [[http://jquery.com][jQuery]]
+	[[http://rapheljs.com][raphael.js]], [[http://www.imagemagick.org/script/index.php][ImageMagick]], [[http://codeigniter.com/][CodeIgniter]], [[http://www.doctrine-project.org/][Doctrine]], [[http://www.boutell.com/gd/][gd]], [[http://www.pdflib.com/][pdflib]], and [[http://jquery.com][jQuery]]
   - Took over the development of the rest of the site that the paint app was
-    part of, and over the course of two months redid a large portion of the
-    backend, moving it to an MVC framework, to allow for the flexibility needed
-    by the site.
+	part of, and over the course of two months redid a large portion of the
+	backend, moving it to an MVC framework, to allow for the flexibility needed
+	by the site.
   - Took over development of a web-based system for tracking information
-    relevant to the landfill industry.
+	relevant to the landfill industry.
 ** December 2009 - March 2010 :: Freelance
   - Various software and server administration tasks on a contractual
-    basis. Strong focus on web development and on refactoring and debugging
-    existing products.
-
+	basis. Strong focus on web development and on refactoring and debugging
+	existing products.
 ** February 2009 - December 2009 :: [[http://ultracar.co.uk/][Ultracar]]
   - Designed and implemented a webapp for centralizing information needed by
-    salesmen in the car brokerage industry using [[http://www.cherrypy.org][CherryPy]] and [[http://jquery.com][jQuery]].
+	salesmen in the car brokerage industry using [[http://www.cherrypy.org][CherryPy]] and [[http://jquery.com][jQuery]].
 
+** 2004 - February 2009 :: Freelance
+  - Various smaller freelance software projects. A lot of bugfixing in existing
+	web-apps, one notable project porting C++ to python while maintaining
+	performance within reasonable expectations.
 * Languages
 + Python
 + Ruby
 + JavaScript
-+ Lisp (common/e)
 + PHP5
++ Scala
++ Lisp (common/e)
 
 * Technologies / Software
-+ Git - 4+ years of everyday use
-+ SVN - 5+ years of as-needed use
-+ Emacs - 8+ years of everyday use
-+ Scripting - 10+ years of writing scripts for POSIX systems, including BASH,
-  ksh, tcsh, and zsh scripts
++ Git - More than 5 years of everyday use
++ SVN - More than 5 years of everyday use
++ Emacs - More than a decade of everyday use
 
 * Operating Systems
 ** Linux
@@ -77,22 +87,23 @@ for a Linux and OSX environment.
   + Currently run Arch, and love it.
 ** OSX
   + Fine with the unix part.
-
 * Projects
-+ [[https://github.com/jdodds/polymorphic_as_table][polymorphic_as_table]], a plugin for ActiveRecord for working with legacy databases
-+ [[https://github.com/jdodds/qooxdoo.el][qooxdoo.el]], a minor mode for working with qooxdoo applications.
-+ [[https://github.com/jdodds/feather][feather]], a sort of framework for small plugin-based applications
-+ [[https://github.com/jdodds/pyrana/tree/rewrite-to-plugin-architecture][pyrana]], a small mp3 player written using feather
-+ [[https://github.com/jdodds/startproject][startproject]], a utility for initial project templating within emacs
++ [[https://github.com/jdodds/feather][feather]], a python framework for  plugin-based applications
++ [[https://github.com/jdodds/pyrana/tree/rewrite-to-plugin-architecture][pyrana]], a mp3 player written using feather
++ [[http://github.com/jdodds/update][update]], a utility for updating things from various sources
 
 * Miscellaneous
 + Native English speaker with excellent oral and written communication skills.
 + Passionate about improving the world, with a focus on utilizing modern
   technologies for sustainable living.
-+ Passion for finding beautiful solutions to problems, and expressing them
-  clearly through code.
-+ Passion for learning, and for mastering the tools available to me.
-
++ Completed the [[http://www.ai-class.com][Introduction to Artificial Intelligence]] course offered by
+  Stanford, will be continuing to participate in at least one course per 6-week
+  period as long as they're offered.
++ Enjoys finding beautiful solutions to problems, and expressing them
+  clearly.
++ Cares about ensuring the behavior of systems.
++ Life-long passion for learning, and for mastering the tools available to me.
 * Interests
 + Neuroscience
 + Music Creation
++ Everything

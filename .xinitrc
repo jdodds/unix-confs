@@ -12,22 +12,24 @@ if [ -d /usr/local/bin ]; then
 fi
 
 xsetroot -cursor_name left_ptr
+xset +fp /usr/share/fonts/local
+xset fp rehash
+
 xmodmap $HOME/.xmodmap
 
 if [[ $SYSTEM_TYPE =~ $LATOP ]] ; then
     trayer_cmd="/usr/bin/trayer --edge top --align right --SetDockType true --SetPartialStrut true --width 25 --height 18 --margin 690"
     [ -x /usr/bin/trayer ] && $trayer_cmd &
-    [ -x /usr/bin/feh ] && $(cat ~/.fehbg)
+#    [ -x /usr/bin/feh ] && $(cat ~/.fehbg)
     [ -x /usr/bin/urxvtd ] && /usr/bin/urxvtd -q -o -f
     [ -x /usr/local/bin/emacs ] && /usr/local/bin/emacs &
     [ -x /usr/bin/urxvtd ] && /usr/bin/urxvtd &
-
+    [ -x /usr/bin/fahmon ] && /usr/bin/fahmon &
     if [[ -n $(netcfg current) ]] ; then
         to_run=(
             /usr/bin/dropboxd
             /usr/bin/chromium
             /usr/bin/pidgin
-            /usr/bin/skype
         )
 
         for program in ${to_run[@]}; do

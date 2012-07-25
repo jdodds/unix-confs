@@ -1,10 +1,3 @@
-#
-# Sets Oh My Zsh options.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':omz:editor' keymap 'emacs'
 
@@ -35,3 +28,6 @@ source "$HOME/.rvm/scripts/rvm"
 
 # Customize to your needs...
 
+PATH="$HOME/bin:$HOME/.rvm/bin:/usr/share/java/apache-ant/bin:$HOME/.local/bin:$PATH"
+
+[[ $EMACS = t ]] && unsetopt zle
