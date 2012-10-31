@@ -12,17 +12,18 @@ import qualified Data.Map as M
 
 main=do
   conky <- spawnPipe myConkyBar
-  --  statusBar <- spawnPipe myStatusBar
   xmonad =<< dzen defaultConfig
     { terminal = "urxvtc"
     , modMask  = mod4Mask
-    , borderWidth = 3
+    , borderWidth = 1
+    , normalBorderColor = "#000000"
+    , focusedBorderColor = "#0000ff"
+    , workspaces = ["web", "emacs", "shell", "news" ] ++ map show [5..9]
     , layoutHook = avoidStruts $ smartBorders $ layoutHook defaultConfig
     , manageHook = composeAll [isFullscreen --> doFullFloat
                               ,className =? "Qjackctl" --> doFloat
                               ,className =? "Qjackctl" --> doShift "9"
---                            ,appName =? "Emacs TEXTAREA" --> doShift "1"
---                            ,className =? "Emacs" --> doShift "2"
+                              ,className =? "Emacs" --> doShift "2"
                               ,className =? "Xfce4-notifyd" --> doIgnore
                               ,className =? "Pidgin" --> doFloat
                               ,className =? "Skype" --> doFloat
@@ -31,7 +32,6 @@ main=do
                               ,manageDocks
                               ]
     , keys = newKeys
-    --    , logHook = dynamicLogWithPP $ defaultPP { ppOutput = hPutStrLn statusBar }
     }
 
 

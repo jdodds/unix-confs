@@ -1,6 +1,8 @@
 URxvt.scrollBar:	false
 URxvt.foreground:	white
-URxvt.background:       black
+;URxvt.background:       black
+URxvt.depth: 32
+URxvt*background: rgba:0000/0000/0000/cccc
 URxvt.scrollTtyOutput:	false
 URxvt.cursorColor:	grey
 URxvt.scrollTtyKeypress:	true
@@ -8,11 +10,11 @@ URxvt.fading:	30
 URxvt.pointerBlank:	true
 ;URxvt.transparent: true
 URxvt.font:	xft:inconsolata:pixelsize=15
-URxvt.tintColor: blue
-Urxvt.shading: 10
+;URxvt.tintColor: red
+;Urxvt.shading: 0
 Urxvt.borderless: true
 Urxvt.buffered: true
-Urxvt.blendType: tint
+;Urxvt.blendType: tint
 URxvt.visualBell: true
 dzen2.background:	#1a1a1a
 dzen2.foreground:	#ffffff

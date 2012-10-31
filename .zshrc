@@ -30,3 +30,4 @@ source "$HOME/.rvm/scripts/rvm"
 
 PATH="$HOME/bin:$HOME/.rvm/bin:/usr/share/java/apache-ant/bin:$HOME/.local/bin:$PATH"
 EDITOR=emacs
+alias em=extract_music

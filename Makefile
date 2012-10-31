@@ -3,6 +3,8 @@ install-musicmaker: install-common install-linux
 install-workmac: install-common install-mac install-work
 
 install-common:
+	makedir -p "$(HOME)/workspace/planning/notes"
+	ln -sf "$(HOME)/workspace/planning/notes" "$(HOME)/notes"
         ln -sf "$(realpath .bashrc)" "$(HOME)"
         ln -sf "$(realpath emacs-config/.emacs)" "$(HOME)"
         ln -sf "$(realpath emacs-config/.emacs.d)" "$(HOME)"
